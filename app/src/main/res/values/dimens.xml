@@ -1,0 +1,14 @@
+<resources>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="edittext_text_size">20sp</dimen>
+    <dimen name="login_icon">35dp</dimen>
+    <dimen name="account_edit_text_size">20sp</dimen>
+
+    <!--floatableEditText-->
+    <dimen name="flet_hint_text_size">11sp</dimen>
+    <dimen name="flet_hint_text_padding_horizontal">1dp</dimen>
+
+    <dimen name="flet_hint_margin">0dp</dimen>
+</resources>
