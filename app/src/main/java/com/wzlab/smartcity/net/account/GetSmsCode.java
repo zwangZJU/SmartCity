@@ -18,7 +18,7 @@ public class GetSmsCode {
             public void onSuccess(String result) {
                 try {
                     JSONObject jsonObject = new JSONObject(result);
-                    switch (jsonObject.getInt(Config.KEY_STATUS)){
+                    switch (jsonObject.getString(Config.KEY_STATUS)){
                         case Config.RESULT_STATUS_SUCCESS:
                             if(successCallback!=null){
                                 successCallback.onSuccess();

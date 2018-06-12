@@ -28,7 +28,9 @@
         <activity
             android:name=".account.RegisterActivity"
             android:windowSoftInputMode="adjustResize|stateHidden" />
-        <activity android:name=".account.ForgetPasswordActivity"></activity>
+        <activity android:name=".account.ForgetPasswordActivity" />
+        <activity android:name=".main.MainActivity"
+            android:theme="@style/AppTheme"/>
     </application>
 
 </manifest>

@@ -1,5 +1,7 @@
 package com.wzlab.smartcity.net.account;
 
+import android.widget.Toast;
+
 import com.wzlab.smartcity.net.HttpMethod;
 import com.wzlab.smartcity.net.NetConnection;
 import com.wzlab.smartcity.activity.account.Config;
@@ -12,17 +14,19 @@ import org.json.JSONObject;
  */
 
 public class Login {
-    public Login(String phone_md5, String code, final SuccessCallback successCallback, final FailCallback failCallback){
+    public Login(String phone_md5, String codeOrPassword, final String mode, final SuccessCallback successCallback, final FailCallback failCallback){
         new NetConnection(Config.SERVER_URL + Config.ACTION_LOGIN, HttpMethod.POST, new NetConnection.SuccessCallback() {
             @Override
             public void onSuccess(String result) {
+
                 try {
                     JSONObject jsonObject = new JSONObject(result);
 
-                    switch (jsonObject.getInt(Config.KEY_STATUS)){
+                    switch (jsonObject.getString(Config.KEY_STATUS)){
                         case Config.RESULT_STATUS_SUCCESS:
                             if(successCallback!=null){
                                 successCallback.onSuccess(jsonObject.getString(Config.KEY_TOKEN));
+
                             }
                             break;
                         default:
@@ -45,7 +49,7 @@ public class Login {
                     failCallback.onFail();
                 }
             }
-        },Config.KEY_ACTION,Config.ACTION_LOGIN,Config.KEY_PHONE_MD5,phone_md5,Config.KEY_SMS_CODE, code);
+        },Config.KEY_PHONE,phone_md5,Config.KEY_MODE,mode,mode.equals(Config.LOGIN_BY_PASSWORD)?Config.KEY_PASSWORD:Config.KEY_SMS_CODE, codeOrPassword);
     }
 
     public static interface SuccessCallback{

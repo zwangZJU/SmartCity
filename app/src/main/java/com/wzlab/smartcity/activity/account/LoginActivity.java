@@ -20,6 +20,7 @@ import android.widget.Toast;
 
 
 import com.wzlab.smartcity.activity.R;
+import com.wzlab.smartcity.activity.main.MainActivity;
 import com.wzlab.smartcity.net.account.GetSmsCode;
 import com.wzlab.smartcity.net.account.Login;
 import com.wzlab.smartcity.widget.ClearableEditText;
@@ -38,7 +39,7 @@ public class LoginActivity extends AppCompatActivity {
     private ClearableEditText mEtLoginCode;
     private CountDownButton mBtnSendCode;
 
-    private int loginMethod = Config.LOGIN_BY_PASSWORD;
+    private String loginMethod = Config.LOGIN_BY_PASSWORD;
 
     String phone;
     String password;
@@ -199,6 +200,23 @@ public class LoginActivity extends AppCompatActivity {
                 Config.cachePassword(getApplicationContext(),password);
                 progress.setVisibility(View.VISIBLE);
                 progressAnimator(progress);
+
+                new Login(phone, password, Config.LOGIN_BY_PASSWORD, new Login.SuccessCallback() {
+                    @Override
+                    public void onSuccess(String token) {
+                        Config.cacheToken(getApplicationContext(),token);
+                        Config.cachePhone(getApplicationContext(),phone);
+                        startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                    }
+                }, new Login.FailCallback() {
+                    @Override
+                    public void onFail() {
+                        Toast.makeText(getApplicationContext(),R.string.fail_to_login,Toast.LENGTH_SHORT).show();
+
+                    }
+                });
+                //TODO 以后要删除
+               // startActivity(new Intent(LoginActivity.this, MainActivity.class));
             }
         }else if(loginMethod == Config.LOGIN_BY_CODE){
             code = mEtLoginCode.getText().toString().trim();
@@ -212,17 +230,18 @@ public class LoginActivity extends AppCompatActivity {
             }
 
 
-
-            new Login(phone, code, new Login.SuccessCallback() {
+            new Login(phone, code, Config.LOGIN_BY_CODE, new Login.SuccessCallback() {
                 @Override
                 public void onSuccess(String token) {
                     Config.cacheToken(getApplicationContext(),token);
                     Config.cachePhone(getApplicationContext(),phone);
+                    startActivity(new Intent(LoginActivity.this, MainActivity.class));
                 }
             }, new Login.FailCallback() {
                 @Override
                 public void onFail() {
                     Toast.makeText(getApplicationContext(),R.string.fail_to_login,Toast.LENGTH_SHORT).show();
+
                 }
             });
 
