@@ -12,8 +12,8 @@ import org.json.JSONObject;
  */
 
 public class GetSmsCode {
-    public GetSmsCode(String phone, String action, final SuccessCallback successCallback, final FailCallback failCallback){
-        new NetConnection(Config.SERVER_URL + "getCode", HttpMethod.POST, new NetConnection.SuccessCallback() {
+    public GetSmsCode(String phone, String type, final SuccessCallback successCallback, final FailCallback failCallback){
+        new NetConnection(Config.SERVER_URL + Config.ACTION_GET_SMS_CODE, HttpMethod.POST, new NetConnection.SuccessCallback() {
             @Override
             public void onSuccess(String result) {
                 try {
@@ -21,19 +21,19 @@ public class GetSmsCode {
                     switch (jsonObject.getString(Config.KEY_STATUS)){
                         case Config.RESULT_STATUS_SUCCESS:
                             if(successCallback!=null){
-                                successCallback.onSuccess();
+                                successCallback.onSuccess(jsonObject.getString(Config.KEY_SMS_SESSION_ID));
                             }
                             break;
                         default:
                             if(failCallback!=null){
-                                failCallback.onFail();
+                                failCallback.onFail(jsonObject.getString(Config.RESULT_MESSAGE));
                             }
                             break;
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();
                     if(failCallback!=null){
-                        failCallback.onFail();
+                        failCallback.onFail("发生异常");
                     }
                 }
             }
@@ -41,16 +41,16 @@ public class GetSmsCode {
             @Override
             public void onFail() {
                 if(failCallback!=null){
-                    failCallback.onFail();
+                    failCallback.onFail("未能连接到服务器");
                 }
             }
-        },Config.KEY_ACTION, action,Config.KEY_PHONE,phone);
+        }, Config.KEY_PHONE,phone,Config.KEY_TYPE, type);
     }
 
     public static interface SuccessCallback{
-        void onSuccess();
+        void onSuccess(String smsSessionId);
     }
     public static interface FailCallback{
-        void onFail();
+        void onFail(String msg);
     }
 }

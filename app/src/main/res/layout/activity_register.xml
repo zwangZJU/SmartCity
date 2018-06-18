@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorAccent"
+    android:background="@color/bg"
     android:orientation="vertical"
     android:fitsSystemWindows="true"
     tools:context="com.wzlab.smartcity.activity.account.RegisterActivity">
@@ -29,7 +29,7 @@
                 android:layout_gravity="center"
                 android:gravity="center"
                 android:text="@string/new_user_register"
-                android:textColor="@color/white"
+                android:textColor="@color/text_account_layout"
                 android:textSize="30sp" />
 
             <com.wzlab.smartcity.widget.FloatLabeledEditText
@@ -45,10 +45,10 @@
                     android:hint="@string/phone"
                     android:inputType="phone"
                     android:padding="5dip"
-                    android:textColor="@color/white"
-                    android:textColorHint="@color/white"
+                    android:textColor="@color/text_account_layout"
+                    android:textColorHint="@color/text_account_layout"
                     android:textSize="@dimen/account_edit_text_size"
-                    android:textStyle="bold"
+
                     android:theme="@style/LoginEditText" />
             </com.wzlab.smartcity.widget.FloatLabeledEditText>
 
@@ -57,7 +57,7 @@
                 android:layout_height="2dp"
                 android:layout_marginBottom="5dp"
                 android:layout_marginTop="3dp"
-                android:background="@color/white" />
+                android:background="@color/text_account_layout" />
 
             <com.wzlab.smartcity.widget.FloatLabeledEditText
                 android:layout_width="match_parent"
@@ -73,10 +73,10 @@
                     android:hint="@string/password"
                     android:inputType="textPassword"
                     android:padding="5dip"
-                    android:textColor="@color/white"
-                    android:textColorHint="@color/white"
+                    android:textColor="@color/text_account_layout"
+                    android:textColorHint="@color/text_account_layout"
                     android:textSize="@dimen/account_edit_text_size"
-                    android:textStyle="bold"
+
                     android:theme="@style/LoginEditText" />
             </com.wzlab.smartcity.widget.FloatLabeledEditText>
 
@@ -85,7 +85,7 @@
                 android:layout_height="2dp"
                 android:layout_marginBottom="5dp"
                 android:layout_marginTop="3dp"
-                android:background="@color/white" />
+                android:background="@color/text_account_layout" />
 
 
 
@@ -109,10 +109,10 @@
                         android:hint="@string/code"
                         android:inputType="textPassword"
                         android:padding="5dp"
-                        android:textColor="@color/white"
-                        android:textColorHint="@color/white"
+                        android:textColor="@color/text_account_layout"
+                        android:textColorHint="@color/text_account_layout"
                         android:textSize="@dimen/account_edit_text_size"
-                        android:textStyle="bold"
+
 
                         android:theme="@style/LoginEditText" />
                 </com.wzlab.smartcity.widget.FloatLabeledEditText>
@@ -134,7 +134,7 @@
                 android:layout_height="2dp"
                 android:layout_marginBottom="5dp"
                 android:layout_marginTop="3dp"
-                android:background="@color/white" />
+                android:background="@color/text_account_layout" />
 
             <Button
 

@@ -15,7 +15,7 @@ import org.json.JSONObject;
  */
 
 public class Register {
-    public Register(String phone, String password, String smsCode, final SuccessCallback successCallback, final FailCallback failCallback){
+    public Register(String phone, String password, String smsCode, String smsSessionId,final SuccessCallback successCallback, final FailCallback failCallback){
         new NetConnection(Config.SERVER_URL + Config.ACTION_REGISTER, HttpMethod.POST, new NetConnection.SuccessCallback() {
             @Override
             public void onSuccess(String result) {

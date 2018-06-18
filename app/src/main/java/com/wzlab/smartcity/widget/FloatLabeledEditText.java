@@ -11,7 +11,6 @@ import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.res.TypedArray;
-import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.text.Editable;
@@ -41,7 +40,7 @@ public class FloatLabeledEditText extends FrameLayout {
     private EditText mEditText;
 
     private Context mContext;
-    public int mColor = R.color.layout_login;
+    public int mColor = R.color.text_account_layout;
 
 
     public FloatLabeledEditText(Context context) {

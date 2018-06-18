@@ -23,4 +23,5 @@
     <string name="password_twice">确认密码</string>
     <string name="new_user_register">新用户注册</string>
     <string name="register">注册</string>
+    <string name="fail_to_connect_the_server">未能连接到服务器</string>
 </resources>

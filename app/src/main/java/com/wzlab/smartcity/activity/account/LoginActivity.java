@@ -22,6 +22,7 @@ import android.widget.Toast;
 import com.wzlab.smartcity.activity.R;
 import com.wzlab.smartcity.activity.main.MainActivity;
 import com.wzlab.smartcity.net.account.GetSmsCode;
+
 import com.wzlab.smartcity.net.account.Login;
 import com.wzlab.smartcity.widget.ClearableEditText;
 import com.wzlab.smartcity.widget.CountDownButton;
@@ -34,16 +35,17 @@ public class LoginActivity extends AppCompatActivity {
     private View mInputLayout;
     private ClearableEditText mEtLoginPhone;
     private ClearableEditText mEtLoginPwd;
-    private TextView mTvLoginBycode;
+    private TextView mTvLoginBySmsCode;
     private TextView mTvLoginByPwd;
-    private ClearableEditText mEtLoginCode;
-    private CountDownButton mBtnSendCode;
+    private ClearableEditText mEtLoginSmsCode;
+    private CountDownButton mBtnSendSmsCode;
 
     private String loginMethod = Config.LOGIN_BY_PASSWORD;
 
     String phone;
     String password;
-    String code;
+    String smsCode;
+    String mSmsSessionId;
     FloatLabeledEditText f;
     private TextView mTvRegister;
     private TextView mTvForgetPassword;
@@ -56,9 +58,9 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
-        //透明状态栏
+        //Make the status bar transparent
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-        //透明导航栏
+        //Make the Navigation bar transparent
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
         setContentView(R.layout.activity_login);
 
@@ -67,7 +69,7 @@ public class LoginActivity extends AppCompatActivity {
 
     }
 
-    //如果登录过，将用户名和密码填在EditText上
+    //If have logged in before, the phone and password used last time will be filled in the EditText
     private void initData() {
         phone = Config.getCachedPhone(getApplicationContext());
         password = Config.getCachedPassword(getApplicationContext());
@@ -80,53 +82,54 @@ public class LoginActivity extends AppCompatActivity {
         progress = findViewById(R.id.pb_login);
         mEtLoginPhone = findViewById(R.id.et_login_phone);
         mEtLoginPwd = findViewById(R.id.et_login_pwd);
-        mEtLoginCode = findViewById(R.id.et_login_code);
+        mEtLoginSmsCode = findViewById(R.id.et_login_sms_code);
 
-        mBtnSendCode = findViewById(R.id.btn_send_code);
-        mBtnSendCode.setOnClickListener(new View.OnClickListener() {
+        mBtnSendSmsCode = findViewById(R.id.btn_send_sms_code);
+        mBtnSendSmsCode.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 phone = mEtLoginPhone.getText().toString().trim();
                 if(!TextUtils.isEmpty(phone)){
-                    mBtnSendCode.setIsCountDown(true);
+                    mBtnSendSmsCode.setIsCountDown(true);
 
-                    new GetSmsCode(phone, Config.ACTION_GET_CODE_LOGIN, new GetSmsCode.SuccessCallback() {
+                    new GetSmsCode(phone, Config.TYPE_SMS_CODE_LOGIN, new GetSmsCode.SuccessCallback() {
                         @Override
-                        public void onSuccess() {
+                        public void onSuccess(String smsSessionId) {
+                            mSmsSessionId = smsSessionId;
                             Toast.makeText(getApplicationContext(),R.string.success_to_send_code,Toast.LENGTH_SHORT).show();
                         }
                     }, new GetSmsCode.FailCallback() {
                         @Override
-                        public void onFail() {
-                            mBtnSendCode.shutdown();
-                            Toast.makeText(getApplicationContext(),R.string.fail_to_get_code,Toast.LENGTH_SHORT).show();
+                        public void onFail(String msg) {
+                            mBtnSendSmsCode.shutdown();
+                            Toast.makeText(getApplicationContext(),msg,Toast.LENGTH_SHORT).show();
 
                         }
                     });
                 }else{
-                    mBtnSendCode.shutdown();
+                    mBtnSendSmsCode.shutdown();
                     Toast.makeText(getApplicationContext(),R.string.phone_number_can_not_be_empty,Toast.LENGTH_SHORT).show();
 
                 }
             }
         });
-
-        mTvLoginBycode = findViewById(R.id.tv_login_by_code);
-        mTvLoginBycode.setOnClickListener(new View.OnClickListener() {
+        // the Click Listener of TextView LoginBysmsCode
+        mTvLoginBySmsCode = findViewById(R.id.tv_login_by_sms_code);
+        mTvLoginBySmsCode.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 f =findViewById(R.id.flet_pwd);
                 f.setVisibility(View.GONE);
 
                 mEtLoginPwd.setVisibility(View.GONE);
-                findViewById(R.id.rl_code).setVisibility(View.VISIBLE);
-                findViewById(R.id.flet_code).setVisibility(View.VISIBLE);
-                mBtnSendCode.setVisibility(View.VISIBLE);
-                mEtLoginCode.setVisibility(View.VISIBLE);
-                mEtLoginCode.requestFocus();
-                mTvLoginBycode.setVisibility(View.GONE);
+                findViewById(R.id.rl_sms_code).setVisibility(View.VISIBLE);
+                findViewById(R.id.flet_sms_code).setVisibility(View.VISIBLE);
+                mBtnSendSmsCode.setVisibility(View.VISIBLE);
+                mEtLoginSmsCode.setVisibility(View.VISIBLE);
+                mEtLoginSmsCode.requestFocus();
+                mTvLoginBySmsCode.setVisibility(View.GONE);
                 mTvLoginByPwd.setVisibility(View.VISIBLE);
-                loginMethod = Config.LOGIN_BY_CODE;
+                loginMethod = Config.LOGIN_BY_SMS_CODE;
 
             }
         });
@@ -135,16 +138,16 @@ public class LoginActivity extends AppCompatActivity {
         mTvLoginByPwd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                findViewById(R.id.rl_code).setVisibility(View.GONE);
-                findViewById(R.id.flet_code).setVisibility(View.GONE);
-                mBtnSendCode.setVisibility(View.GONE);
-                mEtLoginCode.setVisibility(View.GONE);
+                findViewById(R.id.rl_sms_code).setVisibility(View.GONE);
+                findViewById(R.id.flet_sms_code).setVisibility(View.GONE);
+                mBtnSendSmsCode.setVisibility(View.GONE);
+                mEtLoginSmsCode.setVisibility(View.GONE);
                 findViewById(R.id.flet_pwd).setVisibility(View.VISIBLE);
 
                 mEtLoginPwd.setVisibility(View.VISIBLE);
                 mEtLoginPwd.requestFocus();
                 mTvLoginByPwd.setVisibility(View.GONE);
-                mTvLoginBycode.setVisibility(View.VISIBLE);
+                mTvLoginBySmsCode.setVisibility(View.VISIBLE);
                 loginMethod = Config.LOGIN_BY_PASSWORD;
             }
         });
@@ -188,6 +191,7 @@ public class LoginActivity extends AppCompatActivity {
 
         // Store values at the time of the login attempt.
         phone = mEtLoginPhone.getText().toString().trim();
+        // 1.Login by password
         if(loginMethod == Config.LOGIN_BY_PASSWORD){
             password = mEtLoginPwd.getText().toString().trim();
             if (TextUtils.isEmpty(phone)) {
@@ -201,45 +205,49 @@ public class LoginActivity extends AppCompatActivity {
                 progress.setVisibility(View.VISIBLE);
                 progressAnimator(progress);
 
-                new Login(phone, password, Config.LOGIN_BY_PASSWORD, new Login.SuccessCallback() {
+                new Login(phone, password, "",Config.LOGIN_BY_PASSWORD, new Login.SuccessCallback() {
                     @Override
                     public void onSuccess(String token) {
                         Config.cacheToken(getApplicationContext(),token);
                         Config.cachePhone(getApplicationContext(),phone);
                         startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                        finish();
                     }
                 }, new Login.FailCallback() {
                     @Override
-                    public void onFail() {
-                        Toast.makeText(getApplicationContext(),R.string.fail_to_login,Toast.LENGTH_SHORT).show();
+                    public void onFail(String msg) {
+                        Toast.makeText(getApplicationContext(),msg,Toast.LENGTH_SHORT).show();
 
                     }
                 });
                 //TODO 以后要删除
                // startActivity(new Intent(LoginActivity.this, MainActivity.class));
             }
-        }else if(loginMethod == Config.LOGIN_BY_CODE){
-            code = mEtLoginCode.getText().toString().trim();
+            // Login by smssmsCode
+        }else if(loginMethod == Config.LOGIN_BY_SMS_CODE){
+            smsCode = mEtLoginSmsCode.getText().toString().trim();
             if (TextUtils.isEmpty(phone)) {
                 Toast.makeText(this, R.string.phone_number_can_not_be_empty, Toast.LENGTH_SHORT).show();
                 return;
             }
-            if (TextUtils.isEmpty(code)) {
+            if (TextUtils.isEmpty(smsCode)) {
                 Toast.makeText(this, R.string.code_can_not_be_empty, Toast.LENGTH_SHORT).show();
                 return;
             }
 
 
-            new Login(phone, code, Config.LOGIN_BY_CODE, new Login.SuccessCallback() {
+            new Login(phone, smsCode, mSmsSessionId,Config.LOGIN_BY_SMS_CODE, new Login.SuccessCallback() {
                 @Override
                 public void onSuccess(String token) {
                     Config.cacheToken(getApplicationContext(),token);
                     Config.cachePhone(getApplicationContext(),phone);
+
                     startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                    finish();
                 }
             }, new Login.FailCallback() {
                 @Override
-                public void onFail() {
+                public void onFail(String msg) {
                     Toast.makeText(getApplicationContext(),R.string.fail_to_login,Toast.LENGTH_SHORT).show();
 
                 }

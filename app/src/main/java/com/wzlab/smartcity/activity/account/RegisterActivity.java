@@ -23,6 +23,8 @@ public class RegisterActivity extends AppCompatActivity {
     private Button mBtnRegister;
     private CountDownButton mBtnSendSmsCode;
 
+    private String mSmsSessionId;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,16 +50,17 @@ public class RegisterActivity extends AppCompatActivity {
                 if(!TextUtils.isEmpty(phone)){
                     mBtnSendSmsCode.setIsCountDown(true);
 
-                    new GetSmsCode(phone, Config.ACTION_GET_CODE_REGISTER, new GetSmsCode.SuccessCallback() {
+                    new GetSmsCode(phone, Config.TYPE_SMS_CODE_REGISTER, new GetSmsCode.SuccessCallback() {
                         @Override
-                        public void onSuccess() {
+                        public void onSuccess(String smsSessionId) {
+                            mSmsSessionId = smsSessionId;
                             Toast.makeText(getApplicationContext(),R.string.success_to_send_code,Toast.LENGTH_SHORT).show();
                         }
                     }, new GetSmsCode.FailCallback() {
                         @Override
-                        public void onFail() {
+                        public void onFail(String msg) {
 
-                            Toast.makeText(getApplicationContext(),R.string.fail_to_get_code,Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getApplicationContext(),msg,Toast.LENGTH_SHORT).show();
                             mBtnSendSmsCode.shutdown();
                         }
                     });
@@ -88,7 +91,7 @@ public class RegisterActivity extends AppCompatActivity {
                     return;
                 }
                 Toast.makeText(getApplicationContext(),"注册",Toast.LENGTH_SHORT).show();
-                new Register(phone, password, smsCode, new Register.SuccessCallback() {
+                new Register(phone, password, smsCode, mSmsSessionId ,new Register.SuccessCallback() {
                     @Override
                     public void Success(String result) {
                         Toast.makeText(getApplicationContext(),result,Toast.LENGTH_SHORT).show();
