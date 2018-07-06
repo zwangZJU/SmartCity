@@ -66,7 +66,7 @@ public final class ViewfinderView extends View {
     Resources resources = getResources();
     maskColor = resources.getColor(R.color.viewfinder_mask);
     resultColor = resources.getColor(R.color.result_view);
-    laserColor = resources.getColor(R.color.viewfinder_laser);
+    laserColor = resources.getColor(R.color.viewfinder_laser2);
     resultPointColor = resources.getColor(R.color.possible_result_points);
     scannerAlpha = 0;
     possibleResultPoints = new ArrayList<>(5);

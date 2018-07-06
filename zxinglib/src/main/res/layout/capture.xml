@@ -197,6 +197,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom|center_horizontal"
+            android:layout_marginBottom="90dp"
             android:background="@color/transparent"
             android:text="@string/msg_default_status"
             android:textColor="@color/status_text"/>

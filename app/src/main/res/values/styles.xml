@@ -15,6 +15,6 @@
 
     <style name="LoginEditText" parent="Theme.AppCompat.Light">
         <item name="colorControlNormal">@color/white</item>
-        <item name="colorControlActivated">@color/white</item>
+        <item name="colorControlActivated">@color/text_account_layout</item>
     </style>
 </resources>

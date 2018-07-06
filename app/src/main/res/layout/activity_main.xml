@@ -6,10 +6,4 @@
     android:layout_height="match_parent"
     tools:context="com.wzlab.smartcity.activity.main.MainActivity">
 
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/ic_qr_scanner"
-        android:id="@+id/iv_qr_scanner"
-        />
 </RelativeLayout>

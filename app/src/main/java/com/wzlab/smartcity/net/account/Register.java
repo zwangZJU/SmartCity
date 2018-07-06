@@ -44,7 +44,7 @@ public class Register {
                     failCallback.Fail();
                 }
             }
-        },Config.KEY_PHONE, phone, Config.KEY_PASSWORD,password, Config.KEY_SMS_CODE, smsCode);
+        },Config.KEY_PHONE, phone, Config.KEY_PASSWORD,password, Config.KEY_SMS_CODE, smsCode,Config.KEY_SMS_SESSION_ID,smsSessionId);
 
 
     }

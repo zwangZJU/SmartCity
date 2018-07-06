@@ -1,0 +1,15 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="cn.zju.id21732091.wangzhen.HelloActivity">
+
+    <item
+        android:id="@+id/action_qr_scanner"
+        android:orderInCategory="10"
+        android:title=""
+        android:icon="@drawable/ic_qr_scanner"
+        app:showAsAction="ifRoom"/>
+
+
+
+</menu>
