@@ -4,15 +4,16 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 
-import com.wzlab.smartcity.activity.temp.SettingIPActivity;
+
 
 /**
  * Created by wzlab on 2018/6/2.
  */
 
 public class Config {
-    public static final String IP = "192.168.1.162";
+    public static final String IP = "192.168.31.1";
     public static final String SERVER_URL = "http://"+IP+":9090/cdz/api/do.jhtml?router=appApiService.";
+    public static final String TYPE_ROLE = "3";
 
     public static final String ACTION_REGISTER = "userRegister";
     public static final String ACTION_LOGIN="userLogin";
@@ -31,6 +32,8 @@ public class Config {
     public static final String KEY_SMS_CODE = "smsCode";
     public static final String KEY_SMS_SESSION_ID = "smsSessionId";
     public static final String KEY_STATUS = "status";
+    public static final String KEY_ROLE = "role";
+
 
     public static final String RESULT_STATUS_SUCCESS = "1";
     public static final String RESULT_STATUS_FAIL = "0";

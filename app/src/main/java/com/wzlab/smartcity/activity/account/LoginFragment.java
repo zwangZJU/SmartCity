@@ -51,7 +51,7 @@ public class LoginFragment extends Fragment {
     FloatLabeledEditText f;
     private TextView mTvRegister;
     private TextView mTvForgetPassword;
-    //private float mWidth, mHeight;
+
 
 
     @Nullable
@@ -68,19 +68,7 @@ public class LoginFragment extends Fragment {
         initView(view);
         initData(view);
     }
-    //    @Override
-//    protected void onCreate(Bundle savedInstanceState) {
-//        super.onCreate(savedInstanceState);
-//        requestWindowFeature(Window.FEATURE_NO_TITLE);
-//        //Make the status bar transparent
-//        getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-//        //Make the Navigation bar transparent
-//        getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
-//        setContentView(R.layout.fragment_login);
-//
-//
-//
-//    }
+
 
     //If have logged in before, the phone and password used last time will be filled in the EditText
     private void initData(View view) {
@@ -108,9 +96,9 @@ public class LoginFragment extends Fragment {
 
                     new GetSmsCode(phone, Config.TYPE_SMS_CODE_LOGIN, new GetSmsCode.SuccessCallback() {
                         @Override
-                        public void onSuccess(String smsSessionId) {
+                        public void onSuccess(String smsSessionId, String msg) {
                             mSmsSessionId = smsSessionId;
-                            Toast.makeText(view.getContext(),R.string.success_to_send_code,Toast.LENGTH_SHORT).show();
+                            Toast.makeText(view.getContext(),msg,Toast.LENGTH_SHORT).show();
                         }
                     }, new GetSmsCode.FailCallback() {
                         @Override
@@ -229,11 +217,15 @@ public class LoginFragment extends Fragment {
 
                 new Login(phone, password, "",Config.LOGIN_BY_PASSWORD, new Login.SuccessCallback() {
                     @Override
-                    public void onSuccess(String token) {
-                        Config.cacheToken(view.getContext(),token);
-                        Config.cachePhone(view.getContext(),phone);
+                    public void onSuccess(String token, String msg) {
+                        Toast.makeText(view.getContext(),msg,Toast.LENGTH_SHORT).show();
+
+                        Config.cacheToken(view.getContext(), token);
+                        Config.cachePhone(view.getContext(), phone);
+
                         startActivity(new Intent(getActivity(), MainActivity.class));
                         getActivity().finish();
+
 
                     }
                 }, new Login.FailCallback() {
@@ -261,12 +253,15 @@ public class LoginFragment extends Fragment {
 
             new Login(phone, smsCode, mSmsSessionId,Config.LOGIN_BY_SMS_CODE, new Login.SuccessCallback() {
                 @Override
-                public void onSuccess(String token) {
-                    Config.cacheToken(view.getContext(),token);
-                    Config.cachePhone(view.getContext(),phone);
+                public void onSuccess(String token, String msg) {
 
+                    Toast.makeText(view.getContext(),msg,Toast.LENGTH_SHORT).show();
+
+                    Config.cacheToken(view.getContext(), token);
+                    Config.cachePhone(view.getContext(), phone);
                     startActivity(new Intent(getActivity(), MainActivity.class));
                     getActivity().finish();
+
                 }
             }, new Login.FailCallback() {
                 @Override

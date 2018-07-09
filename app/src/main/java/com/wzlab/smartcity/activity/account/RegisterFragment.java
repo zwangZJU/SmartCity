@@ -56,9 +56,9 @@ public class RegisterFragment extends Fragment {
 
                     new GetSmsCode(phone, Config.TYPE_SMS_CODE_REGISTER, new GetSmsCode.SuccessCallback() {
                         @Override
-                        public void onSuccess(String smsSessionId) {
+                        public void onSuccess(String smsSessionId,String msg) {
                             mSmsSessionId = smsSessionId;
-                            Toast.makeText(view.getContext(),R.string.success_to_send_code,Toast.LENGTH_SHORT).show();
+                            Toast.makeText(view.getContext(),msg,Toast.LENGTH_SHORT).show();
                         }
                     }, new GetSmsCode.FailCallback() {
                         @Override
@@ -94,18 +94,22 @@ public class RegisterFragment extends Fragment {
                     Toast.makeText(view.getContext(),R.string.code_can_not_be_empty,Toast.LENGTH_SHORT).show();
                     return;
                 }
-                Toast.makeText(view.getContext(),"注册",Toast.LENGTH_SHORT).show();
+               // Toast.makeText(view.getContext(),"注册",Toast.LENGTH_SHORT).show();
                 new Register(phone, password, smsCode, mSmsSessionId ,new Register.SuccessCallback() {
                     @Override
-                    public void Success(String result) {
-                        Toast.makeText(view.getContext(),result,Toast.LENGTH_SHORT).show();
-                        // 返回登录界面
-                        getFragmentManager().popBackStack();
+                    public void onSuccess(String msg) {
+
+                        Toast.makeText(view.getContext(),msg,Toast.LENGTH_SHORT).show();
+                            // 返回登录界面
+
+                            getFragmentManager().popBackStack();
+
+
                     }
                 }, new Register.FailCallback() {
                     @Override
-                    public void Fail() {
-                        Toast.makeText(view.getContext(),"注册失败",Toast.LENGTH_SHORT).show();
+                    public void onFail(String msg) {
+                        Toast.makeText(view.getContext(),msg,Toast.LENGTH_SHORT).show();
                     }
                 });
 

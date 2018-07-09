@@ -24,16 +24,20 @@ public class Register {
                     switch (jsonObject.getString(Config.KEY_STATUS)){
                         case Config.RESULT_STATUS_SUCCESS:
                             if(successCallback!=null){
-                                successCallback.Success(jsonObject.getString(Config.RESULT_MESSAGE));
+                                successCallback.onSuccess(jsonObject.getString(Config.RESULT_MESSAGE));
                             }
                             break;
                         default:
+                            if(failCallback!=null){
+                                failCallback.onFail(jsonObject.getString(Config.RESULT_MESSAGE));
+                            }
                             break;
                     }
+
                 } catch (JSONException e) {
                     e.printStackTrace();
                     if(failCallback!=null){
-                        failCallback.Fail();
+                        failCallback.onFail("解析异常");
                     }
                 }
             }
@@ -41,19 +45,20 @@ public class Register {
             @Override
             public void onFail() {
                 if(failCallback!=null){
-                    failCallback.Fail();
+                    failCallback.onFail("未能连接到服务器");
+
                 }
             }
-        },Config.KEY_PHONE, phone, Config.KEY_PASSWORD,password, Config.KEY_SMS_CODE, smsCode,Config.KEY_SMS_SESSION_ID,smsSessionId);
+        },Config.KEY_PHONE, phone, Config.KEY_PASSWORD,password, Config.KEY_SMS_CODE, smsCode,Config.KEY_SMS_SESSION_ID,smsSessionId,Config.KEY_ROLE,Config.TYPE_ROLE);
 
 
     }
 
     public static interface SuccessCallback{
-        void Success(String result);
+        void onSuccess(String msg);
 
     }
     public static interface FailCallback{
-        void Fail();
+        void onFail(String msg);
     }
 }

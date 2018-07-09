@@ -57,9 +57,9 @@ public class ForgetPasswordFragment extends Fragment {
                 mBtnFpSendSmsCode.setIsCountDown(true);
                 new GetSmsCode(phone, Config.TYPE_SMS_CODE_FORGET_PASSWORD, new GetSmsCode.SuccessCallback() {
                     @Override
-                    public void onSuccess(String smsSessionId) {
+                    public void onSuccess(String smsSessionId, String msg) {
                         mSmsSessionId = smsSessionId;
-                        Toast.makeText(view.getContext(),R.string.success_to_send_code,Toast.LENGTH_SHORT).show();
+                        Toast.makeText(view.getContext(),msg,Toast.LENGTH_SHORT).show();
                     }
                 }, new GetSmsCode.FailCallback() {
                     @Override
@@ -94,7 +94,10 @@ public class ForgetPasswordFragment extends Fragment {
                     @Override
                     public void onSuccess(String result) {
                         Toast.makeText(view.getContext(), R.string.reset_password_successfully,Toast.LENGTH_SHORT).show();
-                        getFragmentManager().popBackStack();
+
+                            getFragmentManager().popBackStack();
+
+
                     }
                 }, new RecoverPassword.FailCallback() {
                     @Override

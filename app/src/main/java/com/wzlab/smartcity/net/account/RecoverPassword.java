@@ -15,9 +15,9 @@ public class RecoverPassword {
     public RecoverPassword(String phone, String pwd, String smsCode, String smsSessionId, final SuccessCallback successCallback, final FailCallback failCallback){
         new NetConnection(Config.SERVER_URL + Config.ACTION_FORGET_PASSWORD, HttpMethod.POST, new NetConnection.SuccessCallback() {
             @Override
-            public void onSuccess(String result) {
+            public void onSuccess(String msg) {
                 try {
-                    JSONObject jsonObject = new JSONObject(result);
+                    JSONObject jsonObject = new JSONObject(msg);
                     switch (jsonObject.getString(Config.KEY_STATUS)){
                         case Config.RESULT_STATUS_SUCCESS:
                             if(successCallback!=null){
@@ -30,6 +30,7 @@ public class RecoverPassword {
                             }
                             break;
                     }
+
                 } catch (JSONException e) {
                     e.printStackTrace();
                     if(failCallback!=null){
@@ -48,7 +49,7 @@ public class RecoverPassword {
     }
 
     public static interface SuccessCallback {
-        void onSuccess(String result);
+        void onSuccess(String msg);
     }
     public static interface FailCallback {
         void onFail(String msg);

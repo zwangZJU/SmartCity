@@ -26,8 +26,7 @@ public class Login {
                     switch (jsonObject.getString(Config.KEY_STATUS)){
                         case Config.RESULT_STATUS_SUCCESS:
                             if(successCallback!=null){
-                                successCallback.onSuccess(jsonObject.getString(Config.KEY_TOKEN));
-
+                                successCallback.onSuccess(jsonObject.getString(Config.KEY_TOKEN),jsonObject.getString(Config.RESULT_MESSAGE));
                             }
                             break;
                         default:
@@ -50,11 +49,11 @@ public class Login {
                     failCallback.onFail("未能连接到服务器");
                 }
             }
-        },Config.KEY_PHONE,phone_md5,Config.KEY_TYPE,type,type.equals(Config.LOGIN_BY_PASSWORD)?Config.KEY_PASSWORD:Config.KEY_SMS_CODE, codeOrPassword,Config.KEY_SMS_SESSION_ID,smsSessionId);
+        },Config.KEY_PHONE,phone_md5,Config.KEY_TYPE,type,type.equals(Config.LOGIN_BY_PASSWORD)?Config.KEY_PASSWORD:Config.KEY_SMS_CODE, codeOrPassword,Config.KEY_SMS_SESSION_ID,smsSessionId,Config.KEY_ROLE,Config.TYPE_ROLE);
     }
 
     public static interface SuccessCallback{
-        void onSuccess(String token);
+        void onSuccess(String token, String msg);
     }
 
     public static interface FailCallback{

@@ -21,7 +21,7 @@ public class GetSmsCode {
                     switch (jsonObject.getString(Config.KEY_STATUS)){
                         case Config.RESULT_STATUS_SUCCESS:
                             if(successCallback!=null){
-                                successCallback.onSuccess(jsonObject.getString(Config.KEY_SMS_SESSION_ID));
+                                successCallback.onSuccess(jsonObject.getString(Config.KEY_SMS_SESSION_ID), jsonObject.getString(Config.RESULT_MESSAGE));
                             }
                             break;
                         default:
@@ -48,7 +48,7 @@ public class GetSmsCode {
     }
 
     public static interface SuccessCallback{
-        void onSuccess(String smsSessionId);
+        void onSuccess(String smsSessionId, String msg);
     }
     public static interface FailCallback{
         void onFail(String msg);
