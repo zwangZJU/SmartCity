@@ -11,7 +11,7 @@ import android.preference.PreferenceManager;
  */
 
 public class Config {
-    public static final String IP = "192.168.31.1";
+    public static final String IP = "192.168.31.7";
     public static final String SERVER_URL = "http://"+IP+":9090/cdz/api/do.jhtml?router=appApiService.";
     public static final String TYPE_ROLE = "3";
 

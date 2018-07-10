@@ -11,4 +11,7 @@
     <dimen name="flet_hint_text_padding_horizontal">1dp</dimen>
 
     <dimen name="flet_hint_margin">0dp</dimen>
+    <dimen name="nav_header_vertical_spacing">8dp</dimen>
+    <dimen name="nav_header_height">176dp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
 </resources>

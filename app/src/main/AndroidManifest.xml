@@ -18,13 +18,11 @@
         android:theme="@style/AppTheme.NoActionBar">
         <activity
             android:name=".account.AccountActivity"
-            android:windowSoftInputMode="adjustPan|stateHidden">
-
-        </activity>
+            android:windowSoftInputMode="adjustPan|stateHidden"/>
         <activity
-            android:name=".main.MainActivity"
-            android:theme="@style/AppTheme" />
-        <activity android:name=".temp.SettingIPActivity" />
+            android:name=".main.ScannerActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+
         <activity android:name=".start.StartActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -32,6 +30,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".main.MainActivity"
+            android:label="@string/title_activity_main"
+            android:theme="@style/AppTheme.NoActionBar"/>
     </application>
 
 </manifest>

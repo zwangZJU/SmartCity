@@ -2,13 +2,13 @@
 <resources>
     <color name="bg">#fafafa</color>
     <color name="white">#eee</color>
-    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimary">#0099cc</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
     <color name="text_account_layout">#111</color>
     <color name="btn_login">#990099ff</color>
-    <color name="text_login">#0099ff</color>
-    <color name="btn_login1">#aa009999</color>
+    <color name="text_login">#0099cc</color>
+    <color name="btn_login1">#aa0099cc</color>
     <color name="black">#000</color>
     <color name="deep_gray">#333</color>
 </resources>

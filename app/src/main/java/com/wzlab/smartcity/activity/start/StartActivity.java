@@ -15,7 +15,6 @@ import android.widget.RelativeLayout;
 
 import com.wzlab.smartcity.activity.R;
 import com.wzlab.smartcity.activity.account.AccountActivity;
-import com.wzlab.smartcity.activity.main.MainActivity;
 
 public class StartActivity extends AppCompatActivity {
 

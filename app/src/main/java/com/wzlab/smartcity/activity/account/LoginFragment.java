@@ -8,14 +8,11 @@ import android.app.Fragment;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.Window;
-import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -23,6 +20,7 @@ import android.widget.Toast;
 
 import com.wzlab.smartcity.activity.R;
 import com.wzlab.smartcity.activity.main.MainActivity;
+import com.wzlab.smartcity.activity.main.ScannerActivity;
 import com.wzlab.smartcity.net.account.GetSmsCode;
 
 import com.wzlab.smartcity.net.account.Login;
@@ -185,7 +183,7 @@ public class LoginFragment extends Fragment {
         mTvShowServiceTerms.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getActivity(),MainActivity.class));
+                startActivity(new Intent(getActivity(),ScannerActivity.class));
                 getActivity().finish();
             }
         });
@@ -209,7 +207,7 @@ public class LoginFragment extends Fragment {
             } else if (TextUtils.isEmpty(password)) {
                 Toast.makeText(view.getContext(), R.string.password_can_not_be_empty, Toast.LENGTH_SHORT).show();
             } else {
-                Toast.makeText(view.getContext(),phone+password,Toast.LENGTH_SHORT).show();
+              //  Toast.makeText(view.getContext(),phone+password,Toast.LENGTH_SHORT).show();
                 Config.cachePhone(view.getContext(),phone);
                 Config.cachePassword(view.getContext(),password);
                 progress.setVisibility(View.VISIBLE);
@@ -236,7 +234,7 @@ public class LoginFragment extends Fragment {
                     }
                 });
                 //TODO 以后要删除
-               // startActivity(new Intent(LoginFragment.this, MainActivity.class));
+               // startActivity(new Intent(LoginFragment.this, ScannerActivity.class));
             }
             // Login by smssmsCode
         }else if(loginMethod == Config.LOGIN_BY_SMS_CODE){
