@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:text="用户名"
+        android:textSize="19sp"
+        android:textColor="@color/layout_device_info_id"
+        android:layout_marginTop="8dp"
+        android:layout_marginLeft="10dp"
+        android:id="@+id/tv_device_id"/>
+
+    <ImageView
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_below="@+id/tv_device_id"
+        android:layout_marginLeft="10dp"
+        android:id="@+id/iv_location"
+        android:src="@drawable/ic_location"
+
+        android:layout_marginTop="3dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv_device_location"
+        android:text="定位"
+        android:textSize="16sp"
+        android:textColor="@color/layout_device_info_location"
+        android:layout_alignTop="@+id/iv_location"
+        android:layout_toRightOf="@+id/iv_location"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv_device_status"
+        android:textSize="20sp"
+        android:text="撤防"
+        android:layout_marginRight="30dp"
+        android:layout_centerVertical="true"
+        android:layout_alignParentRight="true"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="8dp"
+        android:layout_below="@+id/tv_device_location"
+        android:background="#ddd" />
+
+</RelativeLayout>

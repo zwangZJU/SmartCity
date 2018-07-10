@@ -1,9 +1,15 @@
 package com.wzlab.smartcity.activity.main;
 
+
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
-import android.view.View;
+import android.support.v4.app.Fragment;
+import android.support.v4.view.PagerAdapter;
+import android.support.v4.view.ViewPager;
+
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -14,14 +20,22 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.FrameLayout;
 import android.widget.Toast;
 
 import com.wzlab.smartcity.activity.R;
+import com.wzlab.smartcity.adapter.ViewPagerAdapter;
 import com.wzlab.smartcity.widget.BottomNavMenuBar;
+import com.wzlab.smartcity.widget.NoScrollViewPager;
+
+import java.util.ArrayList;
 
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+
+    private NoScrollViewPager mVpMainContainer;
+    private Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,7 +51,8 @@ public class MainActivity extends AppCompatActivity
         window.setStatusBarColor(getResources().getColor(R.color.colorPrimary));
 
         setContentView(R.layout.activity_main);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar = findViewById(R.id.toolbar);
+        toolbar.setTitle("首页");
         setSupportActionBar(toolbar);
 
 //        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
@@ -49,31 +64,44 @@ public class MainActivity extends AppCompatActivity
 //            }
 //        });
 
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        DrawerLayout drawer = findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
 
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        mVpMainContainer = findViewById(R.id.vp_main_container);
+        ArrayList<Fragment> mFragmentList = new ArrayList<>();
+        Fragment deviceOverviewFragment = new DeviceOverviewFragment();
+        Fragment alarmFragment = new AlarmFragment();
+        Fragment meFragment = new MeFragment();
+
+        mFragmentList.add(deviceOverviewFragment);
+        mFragmentList.add(alarmFragment);
+        mFragmentList.add(meFragment);
+        ViewPagerAdapter mViewPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager(), mFragmentList);
+        mVpMainContainer.setAdapter(mViewPagerAdapter);
+
+
 
 
         //设置底部的导航菜单
         int[] iconNormal = {R.drawable.ic_bottom_nav_bar_home,R.drawable.ic_bottom_nav_bar_alarm,R.drawable.ic_bottom_nav_bar_me};
         int[] iconFocus = {R.drawable.ic_bottom_nav_bar_home_focus,R.drawable.ic_bottom_nav_bar_alarm_focus,R.drawable.ic_bottom_nav_bar_me_focus};
-        String[] text = {"首页","报警","我的"};
+        final String[] text = {"首页","报警","我的"};
         BottomNavMenuBar mBottomNavMenuBar = findViewById(R.id.bottom_nav_menu_bar);
         mBottomNavMenuBar.setIconRes(iconNormal)
                 .setIconResSelected(iconFocus)
                 .setTextRes(text)
                 .setSelected(0);
-
-
-
         mBottomNavMenuBar.setOnItemSelectedListener(new BottomNavMenuBar.OnItemSelectedListener() {
             @Override
             public void onItemSelected(int position) {
+                mVpMainContainer.setCurrentItem(position);
+                toolbar.setTitle(text[position]);
                 Toast.makeText(getApplicationContext()," "+ position,Toast.LENGTH_SHORT).show();
             }
         });
@@ -88,7 +116,7 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     public void onBackPressed() {
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        DrawerLayout drawer = findViewById(R.id.drawer_layout);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
@@ -138,7 +166,7 @@ public class MainActivity extends AppCompatActivity
 
         }
 
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        DrawerLayout drawer = findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }

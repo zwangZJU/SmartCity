@@ -11,4 +11,6 @@
     <color name="btn_login1">#aa0099cc</color>
     <color name="black">#000</color>
     <color name="deep_gray">#333</color>
+    <color name="layout_device_info_id">#111</color>
+    <color name="layout_device_info_location">#666</color>
 </resources>

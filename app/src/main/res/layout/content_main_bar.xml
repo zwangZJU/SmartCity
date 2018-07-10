@@ -9,6 +9,7 @@
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+
         android:theme="@style/AppTheme.NoActionBar.AppBarOverlay">
 
         <android.support.v7.widget.Toolbar
@@ -16,16 +17,20 @@
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="?attr/colorPrimary"
+            android:gravity="center"
+            android:layout_gravity="center"
             app:popupTheme="@style/AppTheme.NoActionBar.PopupOverlay" />
 
     </android.support.design.widget.AppBarLayout>
 
-    <FrameLayout
+
+    <com.wzlab.smartcity.widget.NoScrollViewPager
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/fl_main_container">
-
-    </FrameLayout>
+        android:id="@+id/vp_main_container"
+        android:layout_gravity="center"
+        android:layout_marginTop="55dp"
+        android:layout_marginBottom="55dp"/>
 
     <com.wzlab.smartcity.widget.BottomNavMenuBar
         android:id="@+id/bottom_nav_menu_bar"
