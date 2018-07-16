@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:id="@+id/loading_layout_loading"
+    android:gravity="center"
+    android:paddingBottom="30dp"
+    android:orientation="vertical">
+    <com.wzlab.smartcity.widget.ColorfulProgressBar
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_centerInParent="true"
+        android:id="@+id/cpb_loading_device_detail"
+        app:cpb_background_progressbar_color="#09c"
+        app:cpb_background_progressbar_width="10dp"
+        app:cpb_progressbar_color="#EEE"
+        app:cpb_indeterminate_mode="true"
+        app:cpb_progressbar_width="3dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="5dp"
+        android:text="加载中..."
+        android:textColor="#999999"
+        android:textSize="16sp"/>
+</LinearLayout>

@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/fragment_device_detail"
+    tools:context="com.wzlab.smartcity.activity.main.DeviceDetailActivity">
+
+
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/app_bar_layout"
+        android:theme="@style/AppTheme.NoActionBar.AppBarOverlay">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/tb_device_detail"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            android:gravity="center"
+            android:layout_gravity="center"
+            />
+
+    </android.support.design.widget.AppBarLayout>
+
+
+
+
+    <View
+        android:id="@+id/margin"
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/item_margin"
+        android:layout_below="@id/app_bar_layout"
+        android:background="@color/margin_gray" />
+
+    <TextView
+        android:id="@+id/tv_subtitle_device"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/margin"
+        android:layout_marginLeft="@dimen/subtitle_left_margin"
+        android:gravity="center_vertical"
+        android:lines="1"
+        android:padding="@dimen/subtitle_padding"
+        android:text="@string/device"
+        android:textSize="@dimen/subtitle_size" />
+
+    <View
+        android:id="@+id/v_1"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/line_height"
+        android:layout_below="@id/tv_subtitle_device"
+        android:background="@color/line" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv_device_num_label"
+        android:layout_marginLeft="@dimen/label_left_margin"
+        android:layout_below="@+id/v_1"
+        android:textColor="@color/black"
+        android:layout_marginTop="@dimen/label_top_margin"
+        android:textSize="@dimen/label_size"
+        android:text="@string/device_num"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv_device_num"
+        android:layout_marginRight="@dimen/label_left_margin"
+        android:layout_alignTop="@+id/tv_device_num_label"
+        android:layout_below="@+id/v_1"
+        android:layout_alignParentEnd="true"
+        android:textColor="@color/black"
+        android:textSize="@dimen/label_size"
+        android:text="000000"/>
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv_device_status"
+        android:layout_marginLeft="@dimen/label_left_margin"
+        android:layout_below="@+id/tv_device_num_label"
+        android:textColor="@color/black"
+        android:textSize="@dimen/label_size"
+        android:layout_marginTop="@dimen/label_top_margin"
+        android:text="@string/defensive_state"/>
+
+    <Switch
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/switch_device_status"
+        android:showText="true"
+        android:switchTextAppearance="@style/SwitchTheme"
+        android:textOff="OFF"
+        android:textOn="ON"
+        android:thumb="@drawable/switch_rectangle_thumb_selector"
+        android:track="@drawable/switch_rectangle_track"
+        android:layout_alignParentEnd="true"
+        android:layout_alignTop="@+id/tv_device_status"
+        android:layout_marginRight="@dimen/label_left_margin"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv_device_location"
+        android:layout_alignStart="@+id/tv_device_status"
+        android:layout_marginRight="@dimen/label_left_margin"
+        android:textColor="@color/black"
+        android:textSize="@dimen/label_size"
+        android:layout_below="@+id/tv_device_status"
+        android:layout_marginTop="@dimen/label_top_margin"
+         />
+
+    <View
+        android:id="@+id/margin_2"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/item_margin"
+        android:layout_below="@id/tv_device_location"
+        android:layout_marginTop="@dimen/label_top_margin"
+        android:background="@color/margin_gray" />
+
+
+    <!--负责人模块 -->
+    <TextView
+        android:id="@+id/tv_subtitle_principal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/margin_2"
+        android:layout_marginLeft="@dimen/subtitle_left_margin"
+        android:gravity="center_vertical"
+        android:lines="1"
+        android:padding="@dimen/subtitle_padding"
+        android:text="@string/principal"
+        android:textSize="@dimen/subtitle_size" />
+
+    <View
+        android:id="@+id/v_2"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/line_height"
+        android:layout_below="@id/tv_subtitle_principal"
+        android:background="@color/line" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv_principal_name"
+        android:layout_marginLeft="@dimen/label_left_margin"
+        android:layout_below="@+id/v_2"
+        android:textColor="@color/black"
+        android:layout_marginTop="@dimen/label_top_margin"
+        android:textSize="@dimen/label_size"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv_principal_phone"
+        android:layout_alignStart="@+id/tv_principal_name"
+        android:textColor="@color/black"
+        android:textSize="@dimen/label_size"
+        android:layout_below="@+id/tv_principal_name"
+        android:layout_marginTop="@dimen/label_top_margin"
+         />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv_principal_police"
+        android:layout_alignStart="@+id/tv_principal_phone"
+        android:layout_marginRight="@dimen/label_left_margin"
+        android:textColor="@color/black"
+        android:textSize="@dimen/label_size"
+        android:layout_below="@+id/tv_principal_phone"
+        android:layout_marginTop="@dimen/label_top_margin"
+         />
+
+</RelativeLayout>

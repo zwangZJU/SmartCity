@@ -11,7 +11,7 @@ import android.preference.PreferenceManager;
  */
 
 public class Config {
-    public static final String IP = "192.168.31.7";
+    public static final String IP = "10.180.40.80";
     public static final String SERVER_URL = "http://"+IP+":9090/cdz/api/do.jhtml?router=appApiService.";
     public static final String TYPE_ROLE = "3";
 
@@ -29,6 +29,7 @@ public class Config {
     public static final String KEY_PHONE = "phone";
     public static final String KEY_PHONE_MD5 = "phone_md5";
     public static final String KEY_PASSWORD = "password";
+    public static final String KEY_NEWPASSWORD = "newPwd";
     public static final String KEY_SMS_CODE = "smsCode";
     public static final String KEY_SMS_SESSION_ID = "smsSessionId";
     public static final String KEY_STATUS = "status";
@@ -77,4 +78,8 @@ public class Config {
         editor.putString(KEY_PASSWORD,password);
         editor.apply();
     }
+
+    //main
+    public static final String KEY_DATA = "data";
+    public static final String KEY_ROW = "rows";
 }

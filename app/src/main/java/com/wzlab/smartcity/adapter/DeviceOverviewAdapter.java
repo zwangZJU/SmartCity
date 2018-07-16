@@ -42,7 +42,9 @@ public class DeviceOverviewAdapter extends RecyclerView.Adapter{
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder viewHolder, int position) {
+
         DeviceOverviewViewHolder holder = (DeviceOverviewViewHolder) viewHolder;
+        holder.itemView.setTag(position);
         Device device = deviceList.get(position);
         holder.mTvDeviceId.setText(device.getUser_name() + "  " + device.getUserId_());
         holder.mTvDeviceLocation.setText(device.getUser_address());
@@ -60,11 +62,22 @@ public class DeviceOverviewAdapter extends RecyclerView.Adapter{
         TextView mTvDeviceId;
         TextView mTvDeviceLocation;
         TextView mTvDeviceStatus;
-        public DeviceOverviewViewHolder(View itemView) {
+        public DeviceOverviewViewHolder(final View itemView) {
             super(itemView);
             mTvDeviceId = itemView.findViewById(R.id.tv_device_id);
             mTvDeviceLocation = itemView.findViewById(R.id.tv_device_location);
             mTvDeviceStatus = itemView.findViewById(R.id.tv_device_status);
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+
+                @Override
+                public void onClick(View view) {
+                    int position = (int) itemView.getTag();
+                    if(onItemClickListener != null){
+                        onItemClickListener.onItemClick(view,position);
+                    }
+                }
+            });
         }
 
 

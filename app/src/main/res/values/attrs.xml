@@ -18,6 +18,52 @@
         <attr name="menuCount" format="integer" />
     </declare-styleable>
 
+
+    <declare-styleable name="ColorfulProgressBar">
+        <attr name="cpb_progress" format="integer" />
+        <attr name="cpb_progress_max" format="integer" />
+        <attr name="cpb_indeterminate_mode" format="boolean" />
+        <attr name="cpb_progressbar_color" format="color" />
+        <attr name="cpb_background_progressbar_color" format="color" />
+        <attr name="cpb_progressbar_width" format="dimension" />
+        <attr name="cpb_background_progressbar_width" format="dimension" />
+    </declare-styleable>
+
+
+    <attr name="styleLoadingLayout" format="reference"/>
+    <declare-styleable name="LoadingLayout">
+        <!-- 空布局资源id -->
+        <attr name="EmptyResId" format="reference"/>
+        <!-- 加载中布局资源id -->
+        <attr name="LoadingResId" format="reference"/>
+        <!-- 错误布局资源id -->
+        <attr name="ErrorResId" format="reference"/>
+
+        <!-- 空布局图片 -->
+        <attr name="EmptyImage" format="reference"/>
+        <!-- 空布局文本 -->
+        <attr name="EmptyText" format="string"/>
+
+        <!-- 错误布局图片 -->
+        <attr name="ErrorImage" format="reference"/>
+        <!-- 错误布局文本 -->
+        <attr name="ErrorText" format="string"/>
+        <!-- 错误布局重试按钮文本 -->
+        <attr name="RetryText" format="string"/>
+
+        <!-- 文本颜色 -->
+        <attr name="TextColor" format="color"/>
+        <!-- 文本尺寸 -->
+        <attr name="TextSize" format="dimension"/>
+
+        <!-- 按钮文本颜色 -->
+        <attr name="ButtonTextColor" format="color"/>
+        <!-- 按钮文本尺寸 -->
+        <attr name="ButtonTextSize" format="dimension"/>
+        <!-- 按钮背景 -->
+        <attr name="ButtonBackground" format="reference"/>
+    </declare-styleable>
+
 </resources>
 
 

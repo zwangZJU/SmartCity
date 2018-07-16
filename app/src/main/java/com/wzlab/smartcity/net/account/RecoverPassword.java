@@ -45,7 +45,7 @@ public class RecoverPassword {
                     failCallback.onFail("未能连接到服务器");
                 }
             }
-        },Config.KEY_PHONE, phone,Config.KEY_PASSWORD, pwd, Config.KEY_SMS_CODE, smsCode,Config.KEY_SMS_SESSION_ID,smsSessionId);
+        },Config.KEY_PHONE, phone,Config.KEY_NEWPASSWORD, pwd, Config.KEY_SMS_CODE, smsCode,Config.KEY_SMS_SESSION_ID,smsSessionId);
     }
 
     public static interface SuccessCallback {

@@ -1,4 +1,8 @@
 package com.wzlab.smartcity.po;
+import android.os.Bundle;
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import java.util.Date;
 /**
  * Created by wzlab on 2018/7/10.

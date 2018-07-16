@@ -13,4 +13,7 @@
     <color name="deep_gray">#333</color>
     <color name="layout_device_info_id">#111</color>
     <color name="layout_device_info_location">#666</color>
+    <color name="line">#cccccc</color>
+
+    <color name="margin_gray">#efefef</color>
 </resources>

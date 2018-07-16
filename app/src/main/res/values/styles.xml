@@ -25,4 +25,26 @@
     <style name="SwitchTheme" parent="@android:style/TextAppearance.Small">
         <item name="android:textColor">#FFF</item>
     </style>
+
+
+    <style name="LoadingLayout">
+    </style>
+    <style name="LoadingLayout.Style">
+        <item name="EmptyResId">@layout/layout_loading_empty_view</item>
+        <item name="LoadingResId">@layout/layout_loading_view</item>
+        <item name="ErrorResId">@layout/layout_loading_error_view</item>
+
+        <item name="TextColor">#999999</item>
+        <item name="TextSize">16sp</item>
+
+        <item name="ButtonTextColor">#999999</item>
+        <item name="ButtonTextSize">16sp</item>
+        <item name="ButtonBackground">@drawable/bg_layout_loading_button</item>
+        <item name="EmptyImage">@null</item>
+        <item name="EmptyText">暂无数据</item>
+        <item name="ErrorImage">@null</item>
+        <item name="ErrorText">无网络连接，请检查您的网络...</item>
+        <item name="RetryText">加载失败，点击重试~~</item>
+    </style>
+
 </resources>

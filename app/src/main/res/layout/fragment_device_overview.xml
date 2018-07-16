@@ -4,9 +4,16 @@
     android:layout_height="match_parent"
     tools:context="com.wzlab.smartcity.activity.main.DeviceOverviewFragment">
 
-    <android.support.v7.widget.RecyclerView
+    <com.wzlab.smartcity.widget.LoadingLayout
+        android:id="@+id/loading_layout_device_overview"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/rv_device_overview"/>
+        android:layout_height="match_parent">
+
+        <android.support.v7.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/rv_device_overview"/>
+
+    </com.wzlab.smartcity.widget.LoadingLayout>
 
 </FrameLayout>

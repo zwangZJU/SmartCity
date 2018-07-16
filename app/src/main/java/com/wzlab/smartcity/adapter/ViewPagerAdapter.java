@@ -3,6 +3,9 @@ package com.wzlab.smartcity.adapter;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.app.FragmentStatePagerAdapter;
+
+import com.wzlab.smartcity.activity.main.DeviceOverviewFragment;
 
 import java.util.ArrayList;
 
@@ -10,7 +13,7 @@ import java.util.ArrayList;
  * Created by wzlab on 2018/7/10.
  */
 
-public class ViewPagerAdapter extends FragmentPagerAdapter {
+public class ViewPagerAdapter extends FragmentStatePagerAdapter {
     ArrayList<Fragment> mFragmentList;
     public ViewPagerAdapter(FragmentManager fm, ArrayList<Fragment> fragmentList) {
         super(fm);
@@ -26,4 +29,6 @@ public class ViewPagerAdapter extends FragmentPagerAdapter {
     public int getCount() {
         return mFragmentList.size();
     }
+
+    
 }

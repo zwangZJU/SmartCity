@@ -35,7 +35,11 @@ public class ForgetPasswordFragment extends Fragment {
         return view;
     }
 
- 
+    @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        initView(view);
+    }
 
     private void initView(final View view) {
         mEtFpPhone = view.findViewById(R.id.et_fp_phone);
