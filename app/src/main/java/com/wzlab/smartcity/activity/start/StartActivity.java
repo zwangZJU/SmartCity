@@ -2,11 +2,14 @@ package com.wzlab.smartcity.activity.start;
 
 import android.Manifest;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
+import android.preference.PreferenceManager;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.Window;
 import android.view.WindowManager;
 import android.view.animation.AlphaAnimation;
@@ -15,6 +18,8 @@ import android.widget.RelativeLayout;
 
 import com.wzlab.smartcity.activity.R;
 import com.wzlab.smartcity.activity.account.AccountActivity;
+import com.wzlab.smartcity.activity.account.Config;
+import com.wzlab.smartcity.activity.main.MainActivity;
 
 public class StartActivity extends AppCompatActivity {
 
@@ -64,7 +69,14 @@ public class StartActivity extends AppCompatActivity {
                 public void onAnimationEnd(Animation arg0) {
                     // TODO Auto-generated method stub
                     if(ContextCompat.checkSelfPermission(StartActivity.this, Manifest.permission.WRITE_EXTERNAL_STORAGE)== PackageManager.PERMISSION_GRANTED) {
-                        startActivity(new Intent(StartActivity.this, AccountActivity.class));
+                        SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(getApplication());
+                        String token = sp.getString(Config.KEY_TOKEN, "");
+                        if(TextUtils.isEmpty(token)){
+                            startActivity(new Intent(StartActivity.this, MainActivity.class));
+                        }else{
+                            startActivity(new Intent(StartActivity.this, AccountActivity.class));
+                        }
+
                         finish();
                     }
 

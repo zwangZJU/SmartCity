@@ -35,11 +35,25 @@ public class NoScrollViewPager extends ViewPager {
 
     }
 
+    @Override
+    public boolean onInterceptTouchEvent(MotionEvent ev) {
+        if(isScroll){
+            return super.onInterceptTouchEvent(ev);
+        }else{//禁用滑动
+            return false;
+        }
+    }
+
     //去除切换动画
     @Override
     public void setCurrentItem(int item) {
         super.setCurrentItem(item,false);
     }
+
+//    @Override
+//    public void setCurrentItem(int item) {
+//        super.setCurrentItem(item);
+//    }
 
     public boolean isScroll() {
         return isScroll;

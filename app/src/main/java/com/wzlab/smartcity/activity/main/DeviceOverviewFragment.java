@@ -17,6 +17,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import com.tuesda.walker.circlerefresh.CircleRefreshLayout;
 import com.wzlab.smartcity.activity.R;
 import com.wzlab.smartcity.activity.account.Config;
 import com.wzlab.smartcity.adapter.DeviceOverviewAdapter;
@@ -35,10 +36,12 @@ public class DeviceOverviewFragment extends Fragment {
     private static final int KEY_LOADING_EMPTY = 0;
     private static final int KEY_LOADING_SUCCESS = 1;
     private static final int KEY_LOADING_LOADING = 2;
+    private static final int FINISH_REFRESH = 3;
     private RecyclerView mRvDeviceOverview;
     private ArrayList<Device> deviceList;
     private DeviceOverviewAdapter deviceOverviewAdapter;
     private LoadingLayout loadingLayout;
+    private CircleRefreshLayout circleRefreshLayout;
 
     public DeviceOverviewFragment() {
         // Required empty public constructor
@@ -92,6 +95,9 @@ public class DeviceOverviewFragment extends Fragment {
                 loadingLayout.showContent();
             }else if(msg.what == KEY_LOADING_LOADING){
                 loadingLayout.showLoading();
+            }else if(msg.what == FINISH_REFRESH){
+                initData(true);
+                circleRefreshLayout.finishRefreshing();
             }
         }
     };
@@ -113,12 +119,37 @@ public class DeviceOverviewFragment extends Fragment {
 
 
         loadingLayout = rootView.findViewById(R.id.loading_layout_device_overview);
-        initData();
+        initData(false);
         //没有网络 页面 的重新加载
         loadingLayout.setRetryListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                initData();
+                initData(false);
+            }
+        });
+
+        circleRefreshLayout = rootView.findViewById(R.id.refresh_layout);
+        circleRefreshLayout.setOnRefreshListener(new CircleRefreshLayout.OnCircleRefreshListener() {
+            @Override
+            public void completeRefresh() {
+
+            }
+
+            @Override
+            public void refreshing() {
+                new Thread(){
+                    @Override
+                    public void run() {
+                        try {
+                            Thread.sleep(1200);
+                            Message msg = new Message();
+                            msg.what = FINISH_REFRESH;
+                            handler.sendMessage(msg);
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }.start();
             }
         });
 
@@ -127,12 +158,15 @@ public class DeviceOverviewFragment extends Fragment {
 
     }
 
-    private void initData() {
+    private void initData(boolean isPulling) {
 
         deviceList = new ArrayList<Device>();
 
         //显示加载页面，并加载数据
-        loadingLayout.showLoading();
+        if(!isPulling){
+            loadingLayout.showLoading();
+        }
+
         SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(getContext());
         String phone = sp.getString(Config.KEY_PHONE,"");
 

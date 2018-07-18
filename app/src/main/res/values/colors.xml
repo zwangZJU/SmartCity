@@ -14,6 +14,6 @@
     <color name="layout_device_info_id">#111</color>
     <color name="layout_device_info_location">#666</color>
     <color name="line">#cccccc</color>
-
+    <color name="refresh_back_color">#990099cc</color>
     <color name="margin_gray">#efefef</color>
 </resources>

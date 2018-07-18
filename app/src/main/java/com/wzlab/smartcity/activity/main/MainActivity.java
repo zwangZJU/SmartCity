@@ -102,14 +102,14 @@ public class MainActivity extends AppCompatActivity
             public void onItemSelected(int position) {
                 mVpMainContainer.setCurrentItem(position);
                 toolbar.setTitle(text[position]);
-                Toast.makeText(getApplicationContext()," "+ position,Toast.LENGTH_SHORT).show();
+
             }
         });
 
         mBottomNavMenuBar.setOnItemReSelectedListener(new BottomNavMenuBar.OnItemReSelectedListener() {
             @Override
             public void onItemReSelected(int position) {
-                Toast.makeText(getApplicationContext()," "+ position,Toast.LENGTH_SHORT).show();
+
             }
         });
     }

@@ -1,1 +1,1 @@
-include ':app', 'zxinglib'
+include ':app', 'zxinglib', 'circlerefresh'
