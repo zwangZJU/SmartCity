@@ -18,7 +18,7 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.tuesda.walker.circlerefresh.CircleRefreshLayout;
-import com.wzlab.smartcity.activity.R;
+import com.wzlab.smartcity.R;
 import com.wzlab.smartcity.activity.account.Config;
 import com.wzlab.smartcity.adapter.DeviceOverviewAdapter;
 import com.wzlab.smartcity.net.main.GetDeviceInfo;

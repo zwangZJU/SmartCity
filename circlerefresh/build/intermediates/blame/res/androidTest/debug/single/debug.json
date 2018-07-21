@@ -168,10 +168,6 @@
         "source": "C:\\Users\\wzlab\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.1.0.aar\\2c055fba0ce63f4bb81ceef16c6366f4\\res\\drawable-xhdpi-v4\\abc_ic_menu_paste_mtrl_am_alpha.png"
     },
     {
-        "merged": "D:\\workspace_as\\SmartCity\\circlerefresh\\build\\intermediates\\res\\merged\\androidTest\\debug\\mipmap-xhdpi-v4_ic_launcher.png.flat",
-        "source": "D:\\workspace_as\\SmartCity\\circlerefresh\\build\\intermediates\\bundles\\debug\\res\\mipmap-xhdpi-v4\\ic_launcher.png"
-    },
-    {
         "merged": "D:\\workspace_as\\SmartCity\\circlerefresh\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xxhdpi-v4_abc_scrubber_track_mtrl_alpha.9.png.flat",
         "source": "C:\\Users\\wzlab\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.1.0.aar\\2c055fba0ce63f4bb81ceef16c6366f4\\res\\drawable-xxhdpi-v4\\abc_scrubber_track_mtrl_alpha.9.png"
     },
@@ -186,10 +182,6 @@
     {
         "merged": "D:\\workspace_as\\SmartCity\\circlerefresh\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xhdpi-v4_abc_ic_menu_cut_mtrl_alpha.png.flat",
         "source": "C:\\Users\\wzlab\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.1.0.aar\\2c055fba0ce63f4bb81ceef16c6366f4\\res\\drawable-xhdpi-v4\\abc_ic_menu_cut_mtrl_alpha.png"
-    },
-    {
-        "merged": "D:\\workspace_as\\SmartCity\\circlerefresh\\build\\intermediates\\res\\merged\\androidTest\\debug\\mipmap-xxhdpi-v4_ic_launcher.png.flat",
-        "source": "D:\\workspace_as\\SmartCity\\circlerefresh\\build\\intermediates\\bundles\\debug\\res\\mipmap-xxhdpi-v4\\ic_launcher.png"
     },
     {
         "merged": "D:\\workspace_as\\SmartCity\\circlerefresh\\build\\intermediates\\res\\merged\\androidTest\\debug\\color-v23_abc_tint_seek_thumb.xml.flat",
@@ -284,16 +276,16 @@
         "source": "C:\\Users\\wzlab\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.1.0.aar\\2c055fba0ce63f4bb81ceef16c6366f4\\res\\drawable-hdpi-v4\\abc_textfield_search_default_mtrl_alpha.9.png"
     },
     {
-        "merged": "D:\\workspace_as\\SmartCity\\circlerefresh\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout_abc_screen_toolbar.xml.flat",
-        "source": "C:\\Users\\wzlab\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.1.0.aar\\2c055fba0ce63f4bb81ceef16c6366f4\\res\\layout\\abc_screen_toolbar.xml"
+        "merged": "D:\\workspace_as\\SmartCity\\circlerefresh\\build\\intermediates\\res\\merged\\androidTest\\debug\\anim_abc_fade_out.xml.flat",
+        "source": "C:\\Users\\wzlab\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.1.0.aar\\2c055fba0ce63f4bb81ceef16c6366f4\\res\\anim\\abc_fade_out.xml"
     },
     {
         "merged": "D:\\workspace_as\\SmartCity\\circlerefresh\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable_abc_switch_thumb_material.xml.flat",
         "source": "C:\\Users\\wzlab\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.1.0.aar\\2c055fba0ce63f4bb81ceef16c6366f4\\res\\drawable\\abc_switch_thumb_material.xml"
     },
     {
-        "merged": "D:\\workspace_as\\SmartCity\\circlerefresh\\build\\intermediates\\res\\merged\\androidTest\\debug\\anim_abc_fade_out.xml.flat",
-        "source": "C:\\Users\\wzlab\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.1.0.aar\\2c055fba0ce63f4bb81ceef16c6366f4\\res\\anim\\abc_fade_out.xml"
+        "merged": "D:\\workspace_as\\SmartCity\\circlerefresh\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout_abc_screen_toolbar.xml.flat",
+        "source": "C:\\Users\\wzlab\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.1.0.aar\\2c055fba0ce63f4bb81ceef16c6366f4\\res\\layout\\abc_screen_toolbar.xml"
     },
     {
         "merged": "D:\\workspace_as\\SmartCity\\circlerefresh\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-mdpi-v4_abc_list_longpressed_holo.9.png.flat",
@@ -694,10 +686,6 @@
     {
         "merged": "D:\\workspace_as\\SmartCity\\circlerefresh\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4_abc_btn_radio_to_on_mtrl_015.png.flat",
         "source": "C:\\Users\\wzlab\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.1.0.aar\\2c055fba0ce63f4bb81ceef16c6366f4\\res\\drawable-hdpi-v4\\abc_btn_radio_to_on_mtrl_015.png"
-    },
-    {
-        "merged": "D:\\workspace_as\\SmartCity\\circlerefresh\\build\\intermediates\\res\\merged\\androidTest\\debug\\mipmap-mdpi-v4_ic_launcher.png.flat",
-        "source": "D:\\workspace_as\\SmartCity\\circlerefresh\\build\\intermediates\\bundles\\debug\\res\\mipmap-mdpi-v4\\ic_launcher.png"
     },
     {
         "merged": "D:\\workspace_as\\SmartCity\\circlerefresh\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable_abc_seekbar_tick_mark_material.xml.flat",
@@ -1210,10 +1198,6 @@
     {
         "merged": "D:\\workspace_as\\SmartCity\\circlerefresh\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-hdpi-v4_abc_list_pressed_holo_dark.9.png.flat",
         "source": "C:\\Users\\wzlab\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.1.0.aar\\2c055fba0ce63f4bb81ceef16c6366f4\\res\\drawable-hdpi-v4\\abc_list_pressed_holo_dark.9.png"
-    },
-    {
-        "merged": "D:\\workspace_as\\SmartCity\\circlerefresh\\build\\intermediates\\res\\merged\\androidTest\\debug\\mipmap-hdpi-v4_ic_launcher.png.flat",
-        "source": "D:\\workspace_as\\SmartCity\\circlerefresh\\build\\intermediates\\bundles\\debug\\res\\mipmap-hdpi-v4\\ic_launcher.png"
     },
     {
         "merged": "D:\\workspace_as\\SmartCity\\circlerefresh\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-xxhdpi-v4_abc_btn_switch_to_on_mtrl_00012.9.png.flat",

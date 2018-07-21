@@ -7,7 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.wzlab.smartcity.activity.R;
+import com.wzlab.smartcity.R;
 import com.wzlab.smartcity.po.Device;
 
 import java.util.ArrayList;

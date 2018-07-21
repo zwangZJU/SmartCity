@@ -10,7 +10,7 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.skateboard.zxinglib.CaptureActivity;
-import com.wzlab.smartcity.activity.R;
+import com.wzlab.smartcity.R;
 
 public class ScannerActivity extends AppCompatActivity {
 

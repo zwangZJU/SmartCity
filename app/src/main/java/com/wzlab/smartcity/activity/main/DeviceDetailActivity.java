@@ -10,7 +10,8 @@ import android.widget.Switch;
 import android.widget.TextView;
 
 
-import com.wzlab.smartcity.activity.R;
+import com.baidu.mapapi.SDKInitializer;
+import com.wzlab.smartcity.R;
 import com.wzlab.smartcity.widget.ColorfulProgressBar;
 
 public class DeviceDetailActivity extends AppCompatActivity {
@@ -28,6 +29,7 @@ public class DeviceDetailActivity extends AppCompatActivity {
         Window window = getWindow();
         window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
         window.setStatusBarColor(getResources().getColor(R.color.colorPrimary));
+
         setContentView(R.layout.activity_device_detail);
         initView();
         initData();

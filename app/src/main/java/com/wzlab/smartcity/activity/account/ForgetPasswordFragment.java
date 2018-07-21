@@ -14,7 +14,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.wzlab.smartcity.activity.R;
+import com.wzlab.smartcity.R;
 import com.wzlab.smartcity.net.account.GetSmsCode;
 import com.wzlab.smartcity.net.account.RecoverPassword;
 import com.wzlab.smartcity.widget.CountDownButton;

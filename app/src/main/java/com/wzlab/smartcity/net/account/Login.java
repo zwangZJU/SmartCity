@@ -2,7 +2,7 @@ package com.wzlab.smartcity.net.account;
 
 import android.widget.Toast;
 
-import com.wzlab.smartcity.activity.R;
+
 import com.wzlab.smartcity.net.HttpMethod;
 import com.wzlab.smartcity.net.NetConnection;
 import com.wzlab.smartcity.activity.account.Config;

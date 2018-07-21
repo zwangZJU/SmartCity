@@ -18,7 +18,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 
-import com.wzlab.smartcity.activity.R;
+import com.wzlab.smartcity.R;
 import com.wzlab.smartcity.activity.main.MainActivity;
 import com.wzlab.smartcity.activity.main.ScannerActivity;
 import com.wzlab.smartcity.net.account.GetSmsCode;

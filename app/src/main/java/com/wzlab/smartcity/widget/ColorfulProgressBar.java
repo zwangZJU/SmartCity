@@ -20,7 +20,8 @@ import android.view.WindowManager;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.wzlab.smartcity.activity.R;
+import com.wzlab.smartcity.R;
+
 
 /**
  * Created by wzlab on 2018/7/11.

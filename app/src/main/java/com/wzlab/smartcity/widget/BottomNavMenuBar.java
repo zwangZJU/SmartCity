@@ -16,7 +16,8 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.wzlab.smartcity.activity.R;
+
+import com.wzlab.smartcity.R;
 import com.wzlab.smartcity.utils.PixelUtil;
 
 import java.util.ArrayList;

@@ -23,7 +23,7 @@ import android.view.WindowManager;
 import android.widget.FrameLayout;
 import android.widget.Toast;
 
-import com.wzlab.smartcity.activity.R;
+import com.wzlab.smartcity.R;
 import com.wzlab.smartcity.adapter.ViewPagerAdapter;
 import com.wzlab.smartcity.widget.BottomNavMenuBar;
 import com.wzlab.smartcity.widget.NoScrollViewPager;

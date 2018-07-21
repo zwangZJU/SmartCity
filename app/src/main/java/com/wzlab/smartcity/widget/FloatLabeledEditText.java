@@ -25,12 +25,14 @@ import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 
+import com.wzlab.smartcity.R;
+
 //import com.nineoldandroids.animation.Animator;
 //import com.nineoldandroids.animation.AnimatorListenerAdapter;
 //import com.nineoldandroids.animation.AnimatorSet;
 //import com.nineoldandroids.animation.ObjectAnimator;
 //import com.nineoldandroids.view.animation.AnimatorProxy;
-import com.wzlab.smartcity.activity.R;
+
 
 public class FloatLabeledEditText extends FrameLayout {
 

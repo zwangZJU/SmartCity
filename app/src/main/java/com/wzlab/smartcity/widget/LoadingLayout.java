@@ -22,7 +22,8 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.wzlab.smartcity.activity.R;
+
+import com.wzlab.smartcity.R;
 
 import java.util.HashMap;
 import java.util.Map;

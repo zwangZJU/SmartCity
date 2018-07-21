@@ -4,10 +4,10 @@
     android:layout_height="match_parent"
     tools:context="com.wzlab.smartcity.activity.main.AlarmFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <com.baidu.mapapi.map.MapView
+        android:id="@+id/map_view"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="alarm" />
+        android:layout_height="match_parent" />
+
 
 </FrameLayout>

@@ -8,7 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.wzlab.smartcity.activity.R;
+import com.wzlab.smartcity.R;
 //{@link MeFragment.OnFragmentInteractionListener} interface
 /**
  * A simple {@link Fragment} subclass.

@@ -7,7 +7,8 @@ import android.support.v7.widget.AppCompatEditText;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 
-import com.wzlab.smartcity.activity.R;
+import com.wzlab.smartcity.R;
+
 
 /**
  * Created by wzlab on 2018/6/3.
