@@ -2,7 +2,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.wzlab.smartcity.activity.main.DeviceOverviewFragment">
+    android:clickable="true"
+    tools:context="com.wzlab.smartcity.activity.main.AlarmTaskFragment">
 
     <com.wzlab.smartcity.widget.LoadingLayout
         android:id="@+id/loading_layout_device_overview"
@@ -19,6 +20,7 @@
             <android.support.v7.widget.RecyclerView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:background="#eee"
                 android:id="@+id/rv_device_overview"/>
         </com.tuesda.walker.circlerefresh.CircleRefreshLayout>
 

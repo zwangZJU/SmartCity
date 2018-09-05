@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white_top"
+    android:layout_margin="10dp"
+    android:padding="10dp"
+    android:orientation="vertical">
+
+
+    <ImageView
+        android:id="@+id/iv_repair_icon"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:src="@drawable/ic_repair_form"/>
+    <TextView
+        android:id="@+id/tv_repair_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/iv_repair_icon"
+        android:layout_marginLeft="15dp"
+        android:text="报修单"
+        android:textSize="16sp"
+        android:textColor="@color/black"/>
+
+    <ImageView
+        android:id="@+id/iv_repair_state"
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentTop="true" />
+
+    <View
+        android:id="@+id/margin_repair"
+        android:layout_width="180dp"
+        android:layout_height="1dp"
+        android:layout_marginTop="5dp"
+        android:layout_below="@+id/iv_repair_icon"
+        android:background="@color/margin_gray" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv_repair_time"
+        android:layout_below="@id/margin_repair"
+        android:layout_marginTop="5dp"/>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="10dp"
+        android:layout_below="@+id/tv_repair_time">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/tv_repair_device_id"
+
+            android:textColor="@color/black2"/>
+
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/tv_repair_content"
+            android:textColor="@color/black2"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/tv_repair_handler"
+            android:textColor="@color/black2"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/tv_repair_handler_phone"
+            android:textColor="@color/black2"/>
+
+    </LinearLayout>
+</RelativeLayout>

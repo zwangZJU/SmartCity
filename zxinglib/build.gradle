@@ -25,11 +25,14 @@ android {
 }
 
 dependencies {
+    androidTestCompile('com.android.support:support-annotations:26.1.0') {
+        force = true
+    }
     api 'com.google.zxing:android-core:3.3.0'
     api 'com.google.zxing:core:3.3.0'
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
-    implementation 'com.android.support:appcompat-v7:26.0.0-beta1'
+    implementation 'com.android.support:appcompat-v7:26.1.0'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.1'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'

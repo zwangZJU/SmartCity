@@ -10,6 +10,7 @@ import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.Window;
 import android.view.WindowManager;
 import android.view.animation.AlphaAnimation;
@@ -25,6 +26,7 @@ public class StartActivity extends AppCompatActivity {
 
         private AlphaAnimation alp;
         private RelativeLayout cl;
+    private static final String TAG = "StartActivity";
 
         @Override
         protected void onCreate(Bundle savedInstanceState) {
@@ -79,10 +81,12 @@ public class StartActivity extends AppCompatActivity {
                     if(ContextCompat.checkSelfPermission(StartActivity.this, Manifest.permission.WRITE_EXTERNAL_STORAGE)== PackageManager.PERMISSION_GRANTED) {
                         SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(getApplication());
                         String token = sp.getString(Config.KEY_TOKEN, "");
+                        Log.d(TAG, "onAnimationEnd: "+ token);
                         if(TextUtils.isEmpty(token)){
-                            startActivity(new Intent(StartActivity.this, MainActivity.class));
-                        }else{
                             startActivity(new Intent(StartActivity.this, AccountActivity.class));
+
+                        }else{
+                            startActivity(new Intent(StartActivity.this, MainActivity.class));
                         }
 
                         finish();

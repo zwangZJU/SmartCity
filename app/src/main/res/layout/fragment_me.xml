@@ -1,13 +1,155 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.wzlab.smartcity.activity.main.MeFragment">
+    android:background="@color/background"
+    android:orientation="vertical"
+    android:elevation="0dp"
+     >
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="me" />
+        android:layout_height="wrap_content"
 
-</FrameLayout>
+        android:background="#FFF"
+        android:padding="20dp"
+        android:layout_marginTop="10dp">
+
+        <ImageView
+            android:id="@+id/iv_me_avatar"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+
+            android:src="@drawable/ic_avatar" />
+
+        <TextView
+            android:id="@+id/tv_me_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@id/iv_me_avatar"
+            android:layout_toRightOf="@id/iv_me_avatar"
+            android:layout_marginLeft="40dp"
+            android:layout_marginTop="10dp"
+            android:textSize="20sp"
+            android:text="wzlab"
+            android:textColor="@color/black1"/>
+
+        <TextView
+            android:id="@+id/tv_me_duration"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_below="@id/tv_me_name"
+            android:layout_toRightOf="@id/iv_me_avatar"
+            android:layout_marginLeft="40dp"
+            android:text="ddd"
+
+            />
+
+
+    </RelativeLayout>
+
+
+
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#FFFFFF"
+        android:orientation="vertical">
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btn_edit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="#FFF"
+        android:drawableLeft="@drawable/ic_rate_review_black"
+        android:drawablePadding="10dp"
+        android:gravity="center_vertical"
+        android:paddingLeft="10dp"
+        android:text="资料修改"
+        android:textColor="#000000"
+        style="?android:attr/borderlessButtonStyle"
+        android:textSize="15sp"
+
+        />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:background="@color/margin_gray" />
+
+    <Button
+        android:id="@+id/btn_whereof"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#FFF"
+        android:drawableLeft="@drawable/ic_priority_high_black"
+        android:drawablePadding="10dp"
+        android:gravity="center_vertical"
+        android:paddingLeft="10dp"
+        android:text="关于我们"
+        android:textColor="#000000"
+        style="?android:attr/borderlessButtonStyle"
+        android:textSize="15sp" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:background="@color/margin_gray" />
+
+    <Button
+        android:id="@+id/btn_feedback"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#FFF"
+        android:drawableLeft="@drawable/ic_mood_black"
+        android:drawablePadding="10dp"
+        android:gravity="center_vertical"
+        android:paddingLeft="10dp"
+        android:text="帮助"
+        android:textColor="#000000"
+        style="?android:attr/borderlessButtonStyle"
+        android:textSize="15sp" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:background="@color/margin_gray" />
+
+    <Button
+        android:id="@+id/btn_update"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#FFF"
+        android:drawableLeft="@drawable/ic_sync_black"
+        android:drawablePadding="10dp"
+        android:gravity="center_vertical"
+        android:paddingLeft="10dp"
+        android:text="检查更新"
+        android:textColor="#000000"
+
+        style="?android:attr/borderlessButtonStyle"
+        android:textSize="15sp" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:background="@color/margin_gray" />
+
+
+</LinearLayout>

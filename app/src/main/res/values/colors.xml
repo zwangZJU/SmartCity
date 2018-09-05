@@ -16,4 +16,12 @@
     <color name="line">#cccccc</color>
     <color name="refresh_back_color">#990099cc</color>
     <color name="margin_gray">#efefef</color>
+    <color name="black2">#3b3b3b</color>
+    <color name="black3">#232323</color>
+    <color name="background">#f6f6f6</color>
+    <color name="white_top">#fff</color>
+    <color name="black1">#141414</color>
+    <color name="content_background">#909c</color>
+    <color name="transparent">#0000</color>
+    <color name="remotefile_timebar_alarm_color">#ff8261</color>
 </resources>

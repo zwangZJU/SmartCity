@@ -11,18 +11,19 @@ import android.preference.PreferenceManager;
  */
 
 public class Config {
-    public static final String IP = "10.180.34.181";
+    public static final String IP = "118.126.95.215";
     public static final String SERVER_URL = "http://"+IP+":9090/cdz/api/do.jhtml?router=appApiService.";
     public static final String TYPE_ROLE = "3";
-
+    public static final String ACTION_GET_USER_BASIC_INFO = "getUserBasicInfo";
     public static final String ACTION_REGISTER = "userRegister";
     public static final String ACTION_LOGIN="userLogin";
     public static final String ACTION_FORGET_PASSWORD="forgetPwd";
     public static final String ACTION_GET_SMS_CODE="getSmsCode";
+    public static final String ACTION_RESULT_RETURN ="resultReturn";
     public static final String TYPE_SMS_CODE_LOGIN = "2";
     public static final String TYPE_SMS_CODE_FORGET_PASSWORD = "1";
     public static final String TYPE_SMS_CODE_REGISTER = "0";
-
+    public static final String ACTION_GET_REPAIR_Orders = "getRepairOrders";
     public static final String KEY_ACTION = "action";
     public static final String KEY_TYPE = "type";
     public static final String KEY_TOKEN = "token";
@@ -32,10 +33,17 @@ public class Config {
     public static final String KEY_NEWPASSWORD = "newPwd";
     public static final String KEY_SMS_CODE = "smsCode";
     public static final String KEY_SMS_SESSION_ID = "smsSessionId";
+    public static final String ACTION_UPDATE_REPAIR_PROCESSING_STATE = "updateRepairProcessingState";
+    public static final String ACTION_GET_POLICE_MISSION = "getPoliceMission";
+    public static final String ACTION_SUBMIT_SUGGESTION = "submitSuggestion";
+    public static final String ACTION_UPLOAD_USER_AVATAR = "uploadUserAvatar";
     public static final String KEY_STATUS = "status";
     public static final String KEY_ROLE = "role";
 
-
+    public static final int KEY_LOADING_ERROR = -1;
+    public static final int KEY_LOADING_EMPTY = 0;
+    public static final int KEY_LOADING_SUCCESS = 1;
+    public static final int KEY_LOADING_LOADING = 2;
     public static final String RESULT_STATUS_SUCCESS = "1";
     public static final String RESULT_STATUS_FAIL = "0";
     public static final String RESULT_STATUS_INVALID_TOKEN = "2";

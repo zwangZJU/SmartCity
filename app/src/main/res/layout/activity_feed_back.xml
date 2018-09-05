@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background"
+    android:fitsSystemWindows="true"
+    tools:context="com.wzlab.smartcity.activity.me.FeedBackActivity">
+
+
+    <RelativeLayout
+        android:id="@+id/rl_title_feedback"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white_top">
+
+        <TextView
+            android:id="@+id/tv_cancel_send"
+            android:layout_width="wrap_content"
+
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_marginBottom="14dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="14dp"
+            android:background="@drawable/ic_arrow_back_black"
+            android:textColor="@color/deep_gray"
+            android:textSize="20sp" />
+
+
+        <TextView
+            android:id="@+id/tv_send_status"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@id/tv_cancel_send"
+            android:layout_marginLeft="10dp"
+            android:text="意见反馈"
+            android:textColor="@color/black1"
+            android:textSize="20sp"
+
+            />
+
+
+        <Button
+            android:id="@+id/btn_submit"
+            android:layout_width="60dp"
+            android:layout_height="35dp"
+            android:layout_alignParentRight="true"
+
+            android:layout_centerVertical="true"
+            android:layout_marginRight="10dp"
+            android:background="@color/colorPrimary"
+            android:text="提交"
+            android:textColor="@color/white_top"
+            android:textSize="16sp" />
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/rl_title_feedback"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_subtitle_1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#f6f6f6"
+            android:paddingBottom="10dp"
+            android:paddingLeft="18dp"
+            android:paddingTop="10dp"
+            android:text="(必选)你想反馈的问题类型" />
+
+        <com.mixiaoxiao.smoothcompoundbutton.SmoothCheckBox
+            android:id="@+id/cb_suggest"
+            style="@style/SettingsCellSingleCompoundButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="15dp"
+            android:text="功能异常：功能故障或不可用" />
+
+        <com.mixiaoxiao.smoothcompoundbutton.SmoothCheckBox
+            android:id="@+id/cb_function"
+            style="@style/SettingsCellSingleCompoundButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="15dp"
+            android:text="产品建议：用的不爽，我有建议" />
+
+        <com.mixiaoxiao.smoothcompoundbutton.SmoothCheckBox
+            android:id="@+id/cb_other"
+            style="@style/SettingsCellSingleCompoundButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="15dp"
+            android:text="其他问题" />
+
+
+        <TextView
+            android:id="@+id/tv_subtitle_2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#f6f6f6"
+            android:paddingBottom="10dp"
+            android:paddingLeft="18dp"
+            android:paddingTop="10dp"
+            android:text="请补充详细问题和意见" />
+
+        <EditText
+            android:id="@+id/et_edit_content"
+            android:layout_width="match_parent"
+            android:layout_height="160dp"
+            android:background="@color/white_top"
+            android:gravity="top"
+            android:hint="请输入不少于10字的描述"
+            android:maxLength="240"
+            android:padding="10dp"
+            android:textCursorDrawable="@color/colorPrimary"
+
+            />
+
+        <TextView
+            android:id="@+id/tv_char_statistic"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white_top"
+            android:gravity="right"
+            android:paddingEnd="10dp"
+            android:text="0/240"
+            android:textSize="18sp" />
+
+    </LinearLayout>
+</RelativeLayout>

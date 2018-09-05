@@ -1,6 +1,7 @@
 package com.wzlab.smartcity.activity.main;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -24,6 +25,7 @@ import android.widget.FrameLayout;
 import android.widget.Toast;
 
 import com.wzlab.smartcity.R;
+import com.wzlab.smartcity.activity.me.MeFragment;
 import com.wzlab.smartcity.adapter.ViewPagerAdapter;
 import com.wzlab.smartcity.widget.BottomNavMenuBar;
 import com.wzlab.smartcity.widget.NoScrollViewPager;
@@ -36,22 +38,28 @@ public class MainActivity extends AppCompatActivity
 
     private NoScrollViewPager mVpMainContainer;
     private Toolbar toolbar;
+    private String[] text;
+    private BottomNavMenuBar mBottomNavMenuBar;
+    private double lat;
+    private double lon;
+    private String from;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Window window = getWindow();
         //透明状态栏
-       // window.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+        // window.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
         //透明导航栏
         //window.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
         window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-       // window.getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
-       // window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+        // window.getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
+        // window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
         window.setStatusBarColor(getResources().getColor(R.color.colorPrimary));
 
         setContentView(R.layout.activity_main);
         toolbar = findViewById(R.id.toolbar);
+        toolbar.setNavigationIcon(null);
         toolbar.setTitle("首页");
         setSupportActionBar(toolbar);
 
@@ -65,21 +73,23 @@ public class MainActivity extends AppCompatActivity
 //        });
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
+
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
+        drawer.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
 
         NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
         mVpMainContainer = findViewById(R.id.vp_main_container);
         ArrayList<Fragment> mFragmentList = new ArrayList<>();
-        Fragment deviceOverviewFragment = new DeviceOverviewFragment();
+        Fragment tabViewFragment = new TabViewFragment();
         Fragment alarmFragment = new AlarmFragment();
         Fragment meFragment = new MeFragment();
 
-        mFragmentList.add(deviceOverviewFragment);
+        mFragmentList.add(tabViewFragment);
         mFragmentList.add(alarmFragment);
         mFragmentList.add(meFragment);
         ViewPagerAdapter mViewPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager(), mFragmentList);
@@ -91,8 +101,8 @@ public class MainActivity extends AppCompatActivity
         //设置底部的导航菜单
         int[] iconNormal = {R.drawable.ic_bottom_nav_bar_home,R.drawable.ic_bottom_nav_bar_alarm,R.drawable.ic_bottom_nav_bar_me};
         int[] iconFocus = {R.drawable.ic_bottom_nav_bar_home_focus,R.drawable.ic_bottom_nav_bar_alarm_focus,R.drawable.ic_bottom_nav_bar_me_focus};
-        final String[] text = {"首页","报警","我的"};
-        BottomNavMenuBar mBottomNavMenuBar = findViewById(R.id.bottom_nav_menu_bar);
+        text = new String[]{"首页","报警","我的"};
+        mBottomNavMenuBar = findViewById(R.id.bottom_nav_menu_bar);
         mBottomNavMenuBar.setIconRes(iconNormal)
                 .setIconResSelected(iconFocus)
                 .setTextRes(text)
@@ -129,6 +139,30 @@ public class MainActivity extends AppCompatActivity
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.main, menu);
         return true;
+    }
+
+    public double getLat(){
+        return lat;
+    }
+    public double getLon(){
+        return lon;
+    }
+    public String getFrom(){
+        return from;
+    }
+
+    @Override
+    protected void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
+        from = intent.getStringExtra("from");
+        if(from.equals("alarmTask")){
+            lat = intent.getDoubleExtra("lat",0);
+            lon = intent.getDoubleExtra("lon",0);
+            mVpMainContainer.setCurrentItem(1);
+            toolbar.setTitle(text[1]);
+            mBottomNavMenuBar.setSelected(1);
+
+        }
     }
 
     @Override
@@ -168,6 +202,7 @@ public class MainActivity extends AppCompatActivity
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
+
         return true;
     }
 }

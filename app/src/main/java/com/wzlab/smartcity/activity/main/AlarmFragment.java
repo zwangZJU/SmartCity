@@ -54,6 +54,8 @@ public class AlarmFragment extends Fragment {
 
 
     private LocationManager locationManager;
+    private View rootView;
+    private List<LatLng> latLngList;
 
 
     public AlarmFragment() {
@@ -92,13 +94,76 @@ public class AlarmFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         SDKInitializer.initialize(getActivity().getApplicationContext());
-        return inflater.inflate(R.layout.fragment_alarm, container, false);
+        rootView = inflater.inflate(R.layout.fragment_alarm, container, false);
+        return rootView;
     }
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        mMapView = view.findViewById(R.id.map_view);
+
+
+
+
+
+
+    }
+
+    // 绘制标志物
+    private void drawMarker(List<LatLng> pointList) {
+        //创建OverlayOptions的集合
+        List<OverlayOptions> options = new ArrayList<OverlayOptions>();
+
+        //创建OverlayOptions属性
+        Bitmap bitmap = UIUtil.zoomImg(BitmapFactory.decodeResource(getResources(), R.drawable.ic_alarm_enable), 150, 150);
+        BitmapDescriptor marker = BitmapDescriptorFactory.fromBitmap(bitmap);
+        for(int i=0;i<pointList.size();i++){
+            options.add(new MarkerOptions().position(pointList.get(i)).icon(marker));
+        }
+
+
+        //在地图上批量添加
+        mBaiduMap.addOverlays(options);
+    }
+
+
+
+    @Override
+    public void onStart() {
+        super.onStart();
+
+
+    }
+
+
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+
+
+    }
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
+       // mListener = null;
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+      //  mMapView.onDestroy();
+        mBaiduMap.setMyLocationEnabled(false);
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+
+
+        mMapView = rootView.findViewById(R.id.map_view);
+
         mBaiduMap = mMapView.getMap();
         mBaiduMap.setMyLocationEnabled(true);
 
@@ -125,73 +190,34 @@ public class AlarmFragment extends Fragment {
         mLocationClient.start();
 
 
-        //设置坐标点
-        LatLng point1 = new LatLng(29.816607, 121.548947);
-        LatLng point2 = new LatLng(29.801617, 121.548347);
-        List<LatLng> latLngList = new ArrayList<>();
-        latLngList.add(point1);
-        latLngList.add(point2);
 
+      //  latLngList.add(point1);
+      //  latLngList.add(point2);
+
+        initData();
         drawMarker(latLngList);
 
 
-
-
-
+        myOrientationListener.start();
+        mMapView.onResume();
     }
 
-    // 绘制标志物
-    private void drawMarker(List<LatLng> pointList) {
-        //创建OverlayOptions的集合
-        List<OverlayOptions> options = new ArrayList<OverlayOptions>();
+    private void initData() {
+        // 如果来自于首页alarmTask的点击事件
+        //设置坐标点
 
-        //创建OverlayOptions属性
-        Bitmap bitmap = UIUtil.zoomImg(BitmapFactory.decodeResource(getResources(), R.drawable.ic_marker_normal), 150, 150);
-        BitmapDescriptor marker = BitmapDescriptorFactory.fromBitmap(bitmap);
-        for(int i=0;i<pointList.size();i++){
-            options.add(new MarkerOptions().position(pointList.get(i)).icon(marker));
+        latLngList = new ArrayList<>();
+        String from = ((MainActivity)getActivity()).getFrom();
+        if(from!=null && from.equals("alarmTask")){
+            double lat = ((MainActivity)getActivity()).getLat();
+            double lon = ((MainActivity)getActivity()).getLon();
+            LatLng point = new LatLng(lat, lon);
+            latLngList.add(point);
+            drawMarker(latLngList);
+        }else{
+
         }
 
-
-        //在地图上批量添加
-        mBaiduMap.addOverlays(options);
-    }
-
-
-
-    @Override
-    public void onStart() {
-        super.onStart();
-
-        myOrientationListener.start();
-
-    }
-
-
-
-    @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-
-    }
-
-    @Override
-    public void onDetach() {
-        super.onDetach();
-       // mListener = null;
-    }
-
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
-      //  mMapView.onDestroy();
-        mBaiduMap.setMyLocationEnabled(false);
-    }
-
-    @Override
-    public void onResume() {
-        super.onResume();
-        mMapView.onResume();
     }
 
     @Override
@@ -208,6 +234,9 @@ public class AlarmFragment extends Fragment {
         mLocationClient.stop();
         myOrientationListener.stop();
     }
+
+
+
 
     /**
      * 初始化方向传感器
