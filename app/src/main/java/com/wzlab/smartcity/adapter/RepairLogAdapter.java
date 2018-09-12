@@ -73,7 +73,7 @@ public class RepairLogAdapter extends RecyclerView.Adapter{
                 holder.mIvProgressingState.setImageDrawable(context.getResources().getDrawable(R.drawable.ic_receive_order));
                 break;
             case "1":
-                holder.mIvProgressingState.setImageDrawable(context.getResources().getDrawable(R.drawable.ic_to_repair));
+                holder.mIvProgressingState.setImageDrawable(context.getResources().getDrawable(R.drawable.ic_receive_order));
                 break;
             case "2":
                 holder.mIvProgressingState.setImageDrawable(context.getResources().getDrawable(R.drawable.ic_to_repair));

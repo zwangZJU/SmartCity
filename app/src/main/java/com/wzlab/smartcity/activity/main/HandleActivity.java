@@ -88,6 +88,7 @@ public class HandleActivity extends AppCompatActivity {
                     if(jsonObject.getString("status").equals("1")){
                         String msg = jsonObject.getString("msg");
                         Toast.makeText(getApplicationContext(), msg ,Toast.LENGTH_SHORT).show();
+                        finish();
                     }else{
 
                     }

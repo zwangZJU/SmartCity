@@ -10,6 +10,7 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -55,7 +56,7 @@ public class RepairFragment extends Fragment {
     private NoScrollViewPager viewPager;
     private List<StepBean> stepHorList;
     private List<String> stepVerList;
-
+    private static final int KEY_FINISH_REFRESH = 3;
 
     @SuppressLint("HandlerLeak")
     private Handler handler = new Handler(){
@@ -80,10 +81,15 @@ public class RepairFragment extends Fragment {
 
                 repairLogAdapter.setRepairLogList(repairLogList);
                 loadingLayout.showContent();
+            }else if(msg.what == KEY_FINISH_REFRESH){
+
+                swipeRefreshLayout.setRefreshing(false);
+
             }
         }
     };
     private RepairLogAdapter repairLogAdapter;
+    private SwipeRefreshLayout swipeRefreshLayout;
 
 
     @Override
@@ -105,6 +111,29 @@ public class RepairFragment extends Fragment {
         phone = Config.getCachedPhone(getContext());
         loadingLayout = view.findViewById(R.id.loading_layout_repair_log);
 
+        swipeRefreshLayout = view.findViewById(R.id.srl_refresh_repair_list);
+        swipeRefreshLayout.setColorSchemeResources(R.color.colorPrimary);
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                new Thread(){
+                    @Override
+                    public void run() {
+                        getRepairLogList();
+                        try {
+                            Thread.sleep(1000);
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+                        Message message = new Message();
+                        message.what = KEY_FINISH_REFRESH;
+                        handler.sendMessage(message);
+                    }
+                }.start();
+            }
+        });
+
+
         recyclerView = view.findViewById(R.id.rv_repair_log);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         repairLogList = new ArrayList<>();
@@ -120,13 +149,10 @@ public class RepairFragment extends Fragment {
             @Override
             public void OnOperateButtonClick(View view, int position) {
                 String state = repairLogList.get(position).getProcessing_state();
-                if(state.equals("2")){
+                if(state.equals("1")){
                     updateRepairState(position, state);
-                    Intent intent = new Intent(getContext(),HandleActivity.class);
-                    intent.putExtra("id",repairLogList.get(position).getRepair_id());
-                    intent.putExtra("type","1");
-                    startActivity(intent);
-                }else if(state.equals("3")){
+
+                }else if(state.equals("2")){
                     Intent intent = new Intent(getContext(),HandleActivity.class);
                     intent.putExtra("id",repairLogList.get(position).getRepair_id());
                     intent.putExtra("type","1");
@@ -140,11 +166,12 @@ public class RepairFragment extends Fragment {
 
     }
 
-    private void updateRepairState(int position,String state) {
+    private void updateRepairState(final int position, String state) {
         new NetConnection(Config.SERVER_URL + Config.ACTION_UPDATE_REPAIR_PROCESSING_STATE, HttpMethod.POST, new NetConnection.SuccessCallback() {
             @Override
             public void onSuccess(String result) {
                 getRepairLogList();
+                Toast.makeText(getContext(),"接单成功，请尽快维修！",Toast.LENGTH_LONG).show();
             }
         }, new NetConnection.FailCallback() {
             @Override
@@ -154,6 +181,12 @@ public class RepairFragment extends Fragment {
             }
         },"repair_id",repairLogList.get(position).getRepair_id(),"processing_state",String.valueOf((Integer.parseInt(state)+1)));
 
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        getRepairLogList();
     }
 
     public void getRepairLogList(){
