@@ -4,6 +4,8 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -19,16 +21,22 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-
 import com.bumptech.glide.Glide;
+
 import com.wzlab.smartcity.R;
 import com.wzlab.smartcity.activity.account.Config;
+import com.wzlab.smartcity.activity.me.CheckAndUpdateActivity;
+import com.wzlab.smartcity.activity.me.FeedBackActivity;
+import com.wzlab.smartcity.activity.me.PersonalCenterActivity;
 import com.wzlab.smartcity.net.HttpMethod;
 import com.wzlab.smartcity.net.NetConnection;
 import com.wzlab.smartcity.utils.DataParser;
 
+
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.io.File;
 
 public class MeFragment extends Fragment implements View.OnClickListener{
 
@@ -98,22 +106,17 @@ public class MeFragment extends Fragment implements View.OnClickListener{
         mBtnFeedback.setOnClickListener(this);
         mBtnUpdateApp.setOnClickListener(this);
 
-//        mIvAvatar.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Fragment fragment = new PersonalCenterFragment();
-//                Bundle bundle = new Bundle();
-//                bundle.putString("avatarURL",userInfoAvatarURL);
-//                fragment.setArguments(bundle);
-//                getChildFragmentManager().beginTransaction().addToBackStack(null).replace(R.id.fl_main_container, fragment).commitAllowingStateLoss();
-//
-//            }
-//        });
+
+        //  getUserBasicInfo();
 
 
+    }
+
+
+    @Override
+    public void onResume() {
+        super.onResume();
         getUserBasicInfo();
-
-
     }
 
     @Override
@@ -163,6 +166,11 @@ public class MeFragment extends Fragment implements View.OnClickListener{
     public void onClick(View view) {
         Intent intent;
         switch (view.getId()){
+            case R.id.btn_edit:
+                intent = new Intent(getContext(),PersonalCenterActivity.class);
+                intent.putExtra("avatarURL",userInfoAvatarURL);
+                startActivity(intent);
+                break;
 
             case R.id.btn_update:
                 intent = new Intent(getContext(),CheckAndUpdateActivity.class);
@@ -172,6 +180,7 @@ public class MeFragment extends Fragment implements View.OnClickListener{
                 intent = new Intent(getContext(),FeedBackActivity.class);
                 startActivity(intent);
                 break;
+
         }
     }
 }

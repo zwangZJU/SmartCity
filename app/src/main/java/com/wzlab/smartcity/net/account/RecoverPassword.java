@@ -1,8 +1,11 @@
 package com.wzlab.smartcity.net.account;
 
+
+
 import com.wzlab.smartcity.activity.account.Config;
 import com.wzlab.smartcity.net.HttpMethod;
 import com.wzlab.smartcity.net.NetConnection;
+import com.wzlab.smartcity.utils.Encrypt;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -44,8 +47,9 @@ public class RecoverPassword {
                 if(failCallback!=null){
                     failCallback.onFail("未能连接到服务器");
                 }
+                //MD5加密
             }
-        },Config.KEY_PHONE, phone,Config.KEY_NEWPASSWORD, pwd, Config.KEY_SMS_CODE, smsCode,Config.KEY_SMS_SESSION_ID,smsSessionId);
+        },Config.KEY_PHONE, phone,Config.KEY_NEWPASSWORD, Encrypt.md5(pwd), Config.KEY_SMS_CODE, smsCode,Config.KEY_SMS_SESSION_ID,smsSessionId);
     }
 
     public static interface SuccessCallback {

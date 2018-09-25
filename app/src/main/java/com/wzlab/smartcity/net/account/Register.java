@@ -1,10 +1,13 @@
 package com.wzlab.smartcity.net.account;
 
+import android.content.Context;
+import android.widget.Toast;
 
 
 import com.wzlab.smartcity.activity.account.Config;
 import com.wzlab.smartcity.net.HttpMethod;
 import com.wzlab.smartcity.net.NetConnection;
+import com.wzlab.smartcity.utils.Encrypt;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -47,8 +50,9 @@ public class Register {
                     failCallback.onFail("未能连接到服务器");
 
                 }
+                //TODO MD5加密后发送
             }
-        },Config.KEY_PHONE, phone, Config.KEY_PASSWORD,password, Config.KEY_SMS_CODE, smsCode,Config.KEY_SMS_SESSION_ID,smsSessionId,Config.KEY_ROLE,Config.TYPE_ROLE);
+        },Config.KEY_PHONE, phone, Config.KEY_PASSWORD, Encrypt.md5(password), Config.KEY_SMS_CODE, smsCode,Config.KEY_SMS_SESSION_ID,smsSessionId,Config.KEY_ROLE,Config.TYPE_ROLE);
 
 
     }

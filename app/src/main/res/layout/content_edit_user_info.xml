@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingRight="15dp"
+    android:paddingLeft="15dp"
+    android:paddingBottom="10dp"
+    android:paddingTop="15dp"
+    android:background="@color/edit_dialog_bg"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv_edit_tip"
+        android:layout_marginBottom="5dp"
+        android:textColor="@color/tip"/>
+
+    <EditText
+        android:id="@+id/et_edit_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/NormalEditText"
+        android:textSize="16sp"
+        android:padding="5dp"
+        android:background="@color/white_top"/>
+
+    <NumberPicker
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/np_edit_age">
+    </NumberPicker>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/ll_gender"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:id="@+id/iv_male"
+             android:src="@drawable/ic_male"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:src="@drawable/ic_female"
+            android:id="@+id/iv_female"
+            />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_marginTop="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btn_cancel_edit"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_weight="1"
+            android:background="@color/white_top"
+            android:text="取消"
+            android:layout_marginRight="7dp"
+            android:textSize="17sp"
+            android:textColor="@color/deep_gray" />
+
+        <Button
+            android:id="@+id/btn_confirm_edit"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_weight="1"
+            android:background="@color/colorPrimary"
+            android:text="确定"
+            android:textSize="17sp"
+            android:layout_marginLeft="7dp"
+            android:textColor="@color/white_top" />
+
+    </LinearLayout>
+</LinearLayout>

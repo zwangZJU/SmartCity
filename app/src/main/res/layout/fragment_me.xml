@@ -95,6 +95,7 @@
         android:drawableLeft="@drawable/ic_priority_high_black"
         android:drawablePadding="10dp"
         android:gravity="center_vertical"
+        android:visibility="gone"
         android:paddingLeft="10dp"
         android:text="关于我们"
         android:textColor="#000000"

@@ -32,7 +32,7 @@
     <application
         android:name=".SmartSecurityApplication"
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/ic_icon"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
@@ -72,6 +72,7 @@
         <activity android:name=".activity.main.HandleActivity"></activity>
         <activity android:name=".activity.me.CheckAndUpdateActivity" />
         <activity android:name=".activity.me.FeedBackActivity"></activity>
+        <activity android:name=".activity.me.PersonalCenterActivity" />
     </application>
 
 </manifest>

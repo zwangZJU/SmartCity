@@ -11,9 +11,10 @@ import android.preference.PreferenceManager;
  */
 
 public class Config {
-    public static final String IP = "118.126.95.215";
-    public static final String SERVER_URL = "http://"+IP+":9090/cdz/api/do.jhtml?router=appApiService.";
-    public static final String TYPE_ROLE = "3";
+    public static final String IP = "60.190.23.22";
+    public static final String SERVER_URL = "http://"+IP+":9090/zhaf/api/do.jhtml?router=appApiService.";
+    public static final String START_IMG_URL = "http://"+IP+":9090/zhaf/myupload/start/start.jpg";
+    public static final String TYPE_ROLE = "1";
     public static final String ACTION_GET_USER_BASIC_INFO = "getUserBasicInfo";
     public static final String ACTION_REGISTER = "userRegister";
     public static final String ACTION_LOGIN="userLogin";
@@ -37,6 +38,7 @@ public class Config {
     public static final String ACTION_GET_POLICE_MISSION = "getPoliceMission";
     public static final String ACTION_SUBMIT_SUGGESTION = "submitSuggestion";
     public static final String ACTION_UPLOAD_USER_AVATAR = "uploadUserAvatar";
+    public static final String ACTION_UPDATE_USER_BASIC_INFO = "updateUserBasicInfo";
     public static final String KEY_STATUS = "status";
     public static final String KEY_ROLE = "role";
 
@@ -50,7 +52,7 @@ public class Config {
     public static final String RESULT_MESSAGE = "msg";
     public static final String LOGIN_BY_PASSWORD = "0";
     public static final String LOGIN_BY_SMS_CODE = "1";
-
+    public static final String ACTION_CHECK_AND_UPDATE = "checkAndUpdate";
     public static final String CHARSET = "utf-8";
     public static final String APP_ID = "com.wzlab.smartcity";
 
