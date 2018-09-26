@@ -242,7 +242,7 @@ public class AlarmTaskFragment extends Fragment {
 
                     }
 
-                    if(alarmTaskList.size()>0){
+                    if(alarmTaskList.size()>0 && alarmTaskList.get(0).getAlarm_id().length()>5){
                         Message message = new Message();
                         message.what = KEY_LOADING_SUCCESS;
                         handler.sendMessage(message);
